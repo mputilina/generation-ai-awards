@@ -293,15 +293,17 @@ def other_noms(skip):
     return f'<section class="other-noms"><h2>Другие номинации</h2><div class="onl">{links}</div></section>'
 
 def nomination(n):
-    crit = ''.join(f'<details><summary>{esc(a)}</summary><p>{esc(b)}</p></details>' for a, b in n['crit'])
+    crit = ''.join(f'<div class="ccard"><h3>{esc(a)}</h3><p>{esc(b)}</p></div>' for a, b in n['crit'])
     lead = n.get('lead') or n['desc']
     apply = APPLY_BASE + n['slug']
     btn = f'<a class="btn" href="{apply}" target="_blank" rel="noopener"><span>Заполнить заявку</span></a>'
     b = f'''<section class="phead"><div class="wrap">{crumbs(("Номинации", "index.html#nom"), (n["title"], None))}<h1 class="long">Номинация «{esc(n["title"])}»</h1><p class="lead">{esc(lead)}</p><div class="ph-cta">{btn}</div></div></section>
 <main><div class="wrap"><div class="crit">
-  <h2>Критерии оценки номинации</h2>{crit}
-  <div class="apply-row"><p>Готовы участвовать? Заявка подается бесплатно, до 3 проектов от одной компании.</p>{btn}</div>
-  <div class="help">Не знаете, какую номинацию выбрать или как оформить заявку? Читайте бриф с советами членов жюри <a href="ai-navigator.html">AI-Навигатор 2.0</a> и <a href="protocol.html">Положение премии</a>.</div>
+  <h2>Критерии оценки номинации</h2><div class="cgrid">{crit}</div>
+  <div class="crit-foot">
+    <div class="apply-row"><p>Готовы участвовать? Заявка подается бесплатно, до 3 проектов от одной компании.</p>{btn}</div>
+    <div class="help"><p>Не знаете, какую номинацию выбрать или как оформить заявку? Читайте бриф с советами членов жюри <a href="ai-navigator.html">AI-Навигатор 2.0</a> и <a href="protocol.html">Положение премии</a>.</p></div>
+  </div>
 </div>{other_noms(n["slug"])}</div></main>'''
     return page(nom_file(n['slug']), f'Номинация «{n["title"]}» премии Generation AI Awards', lead, b, 'nom')
 
