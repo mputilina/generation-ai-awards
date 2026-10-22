@@ -121,23 +121,17 @@ def block_item(kind, body, mod):
         name, role = [x.strip() for x in lines[0][8:].split('|')]
         initials = ''.join(w[0] for w in name.split()[:2])
         top = f'<div class="who"><span class="av">{esc(initials)}</span><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
-    elif lines and lines[0].startswith('!juror '):   # large jury photo + name and role (advice cards)
-        src, name, role = [x.strip() for x in lines[0][7:].split('|')]
-        top = f'<img class="fig" src="{esc(src)}" alt="{esc(name)}" loading="lazy">'; lines = lines[1:]
-        lines = [f'<p class="who"><b>{esc(name)}</b><small>{esc(role)}</small></p>', ''] + lines
-    elif lines and lines[0].startswith('!figure '):
-        src, alt = [x.strip() for x in lines[0][8:].split('|')]
-        top = f'<img class="fig" src="{esc(src)}" alt="{esc(alt)}" loading="lazy">'; lines = lines[1:]
+    elif lines and lines[0].startswith('!juror '):   # advice card: text first, signed below with a round photo
+        src, name, role = [x.strip() for x in lines[0][7:].split('|')]; lines = lines[1:]
+        lines = lines + ['', f'!sign {src} | {name} | {role}']
     elif lines and lines[0].startswith('!photo '):
         src, name, role = [x.strip() for x in lines[0][7:].split('|')]
         top = f'<div class="who"><img class="av" src="{esc(src)}" alt="{esc(name)}" loading="lazy"><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
-    inner = md_inline('\n'.join(lines))
-    if kind == 'advice': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
-    if kind == 'split':   # two cards side by side; a "!sign photo | name | role" line becomes a signature with a round photo
-        def sign(m): return (f'<div class="sign"><img src="{esc(m[1])}" alt="{esc(m[2])}" loading="lazy">'
-                             f'<p><b>{esc(m[2])}</b><small>{esc(m[3])}</small></p></div>')
-        txt = re.sub(r'^!sign (.+?) \| (.+?) \| (.+)$', sign, '\n'.join(lines), flags=re.M)
-        return f'<div class="card{" " + mod if mod else ""}">{md_inline(txt)}</div>'
+    def sign(m): return (f'<div class="sign"><img src="{esc(m[1])}" alt="{esc(m[2])}" loading="lazy">'
+                         f'<p><b>{esc(m[2])}</b><small>{esc(m[3])}</small></p></div>')
+    # "!sign photo | name | role" anywhere in a card → signature with a round photo
+    inner = md_inline(re.sub(r'^!sign (.+?) \| (.+?) \| (.+)$', sign, '\n'.join(lines), flags=re.M))
+    if kind == 'split': return f'<div class="card{" " + mod if mod else ""}">{inner}</div>'
     if kind == 'quote': return f'<figure class="card"><blockquote>{inner}</blockquote><figcaption>{top}</figcaption></figure>'
     tag = {'dodont': ('Не стоит' if mod == 'dont' else 'Приветствуется')}.get(kind, '')
     badge = f'<span class="badge">{tag}</span>' if tag else ''

@@ -81,6 +81,7 @@ main{padding-bottom:var(--sec)}
 .prose h3{font-size:21px;line-height:1.25;font-weight:700;color:#fff;margin-top:1.9em}
 .prose h2+*,.prose h3+*{margin-top:.7em}
 .prose a{color:var(--acc);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.prose a.btn{text-decoration:none}   /* buttons are never underlined */
 .prose strong{color:#fff;font-weight:700}
 .prose ul,.prose ol{padding-left:1.3em}
 .prose li+li{margin-top:.5em}
@@ -275,6 +276,16 @@ main{padding-bottom:var(--sec)}
 .blk .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;font-size:16px;line-height:1.6;position:relative}
 .blk .card>*+*{margin-top:.75em}
 .blk .card h3{margin:0;font-size:20px;line-height:1.25;color:#fff}
+/* card titles one level down (h4): 16px above, text 8px below */
+.blk .card>h4{margin-top:16px;font-size:20px;line-height:1.25;color:#fff}
+.blk .card>h4+p{margin-top:8px}
+/* signature under a quote or advice: round photo, name, role on the next line */
+.blk .sign{display:flex;align-items:center;gap:16px;margin-top:24px}
+.blk .sign img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}
+.blk .sign p{margin:0;line-height:1.35}
+.blk .sign b{display:block;color:#fff;font-size:16px}
+.blk .sign small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.blk-advice .sign img{object-position:50% 30%}
 .blk .card ul{padding-left:1.2em}
 .blk-intro,.blk-callouts,.blk-versus,.blk-duo{grid-template-columns:repeat(2,minmax(0,1fr))}
 .blk-intro .card{font-size:17px}
@@ -303,8 +314,6 @@ main{padding-bottom:var(--sec)}
 .blk-dodont{grid-auto-flow:row dense}
 .blk-dodont .card.dont{grid-column:1}
 .blk-dodont .card:not(.dont){grid-column:2}
-.blk-dodont .card>h4{margin-top:16px;font-size:20px;line-height:1.25;color:#fff}
-.blk-dodont .card>p{margin-top:8px}
 /* one lime card across the column (AI-Навигатор: «Важно!») */
 .blk-note .card{background:var(--acc);border:0;color:#0a0a0a;font-size:17px}
 .blk-note .card h3,.blk-note .card strong{color:#0a0a0a}
@@ -317,14 +326,8 @@ main{padding-bottom:var(--sec)}
 .who small{display:block;color:var(--mute);font-size:13px;line-height:1.4;margin-top:2px}
 .blk-icons{grid-template-columns:repeat(3,minmax(0,1fr))}
 .blk-icons .ic{width:56px;height:56px;padding:12px;border-radius:16px;background:var(--acc)}
-/* jury advice: large photo, name and advice on a grey-to-black gradient (AI-Навигатор) */
-.blk-advice .card{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center;padding:20px;background:linear-gradient(135deg,#2b2b2b 0%,#161616 55%,#050505 100%);border-color:#2f2f2f}
-.blk-advice .card>*+*{margin-top:0}
-.blk-advice .fig{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
-.blk-advice .txt>*+*{margin-top:.8em}
-.blk-advice .who{display:block}
-.blk-advice .who b{display:block;font-size:20px;color:#fff}
-.blk-advice .who small{display:block;font-size:14px;color:var(--mute);margin-top:4px}
+/* jury advice on a grey-to-black gradient (AI-Навигатор) */
+.blk-advice .card{padding:clamp(24px,3vw,36px);background:linear-gradient(135deg,#2b2b2b 0%,#161616 55%,#050505 100%);border-color:#2f2f2f}
 /* Инк: favourites, prize and how-to span the whole field; headings and plain paragraphs keep a reading width */
 .nom-ink .narrow>.prose{max-width:none}
 .nom-ink .prose>p,.nom-ink .prose>h2{max-width:860px}
@@ -335,12 +338,6 @@ main{padding-bottom:var(--sec)}
 .blk-split .card h2{margin:0 0 .5em;padding:0;font-size:clamp(28px,3.2vw,40px)}
 .blk-split .card:not(.bright){background:linear-gradient(135deg,#2b2b2b 0%,#161616 55%,#050505 100%);border-color:#2f2f2f}
 .blk-split blockquote{border:0;padding:0;margin-top:24px;font-size:18px;line-height:1.55;font-style:italic;color:#fff}
-/* signature under the quote: round photo, name, role on the next line */
-.blk-split .sign{display:flex;align-items:center;gap:16px;margin-top:24px}
-.blk-split .sign img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}
-.blk-split .sign p{margin:0;line-height:1.35}
-.blk-split .sign b{display:block;color:#fff;font-size:16px}
-.blk-split .sign small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
 .blk-split .card.bright{background:linear-gradient(120deg,#c6f766,#b5f08a 55%,#9fe0b4);border:0;color:#0a0a0a;font-size:18px}
 .blk-split .card.bright h2,.blk-split .card.bright strong{color:#0a0a0a}
 .blk-template .card{background:#0e0e0e;border-style:dashed;font-size:15.5px}
@@ -382,8 +379,7 @@ main{padding-bottom:var(--sec)}
 
 @media (max-width:1000px){
   .ph-grid,.blk-steps,.blk-experts,.blk-icons{grid-template-columns:1fr}
-  .blk-advice .card,.blk-split{grid-template-columns:1fr}
-  .blk-advice .fig{max-width:420px}
+  .blk-split{grid-template-columns:1fr}
   .nom-ink .blk-qa{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:700px){
