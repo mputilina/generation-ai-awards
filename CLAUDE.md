@@ -36,6 +36,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 ## Conventions and decisions already made
 
 - Design: dark background, lime accent `#c6f766`, violet `#2720a7`, Montserrat. All H2 are 40px max (`clamp(28px,3.2vw,40px)`).
+- First screen (`data-hero="garden"`, drawn on `#heroCv` by `initGarden`/`drawGarden`, all in code, no images): surreal night valley — layered violet hills with flower carpets, swaying glowing bulb plants, four giants framing the centre, a luminous ring behind the button, rising spores, mouse parallax. Static layers are cached per resize. Centred column: «2 декабря» pill, title, subtitle, button; the three numbers on frosted plates at the bottom. The old ribbons look is still `data-hero="ribbons"`.
 - Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
 - All quotes are italic (main-page chair quote and participant reviews, `.prose blockquote`, advice cards); signatures (name, role) stay upright.
 - Buttons have no arrows. Carousel ←/→ controls stay.
