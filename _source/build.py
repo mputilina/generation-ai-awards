@@ -60,7 +60,7 @@ def crumbs(*items):
         parts.append(f'<a href="{href}">{esc(label)}</a>' if href else f'<span>{esc(label)}</span>')
     return '<nav class="crumbs" aria-label="Навигация">' + ''.join(parts) + '</nav>'
 
-def page(fname, title, desc, body, active=''):
+def page(fname, title, desc, body, active='', body_cls=''):
     doc = f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -73,7 +73,7 @@ def page(fname, title, desc, body, active=''):
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body{f' class="{body_cls}"' if body_cls else ''}>
 {header(active)}
 {body}
 {FOOTER}
@@ -130,10 +130,14 @@ def block_item(kind, body, mod):
         name, role = [x.strip() for x in lines[0][8:].split('|')]
         initials = ''.join(w[0] for w in name.split()[:2])
         top = f'<div class="who"><span class="av">{esc(initials)}</span><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
+    elif lines and lines[0].startswith('!figure '):
+        src, alt = [x.strip() for x in lines[0][8:].split('|')]
+        top = f'<img class="fig" src="{esc(src)}" alt="{esc(alt)}" loading="lazy">'; lines = lines[1:]
     elif lines and lines[0].startswith('!photo '):
         src, name, role = [x.strip() for x in lines[0][7:].split('|')]
         top = f'<div class="who"><img class="av" src="{esc(src)}" alt="{esc(name)}" loading="lazy"><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
     inner = md_inline('\n'.join(lines))
+    if kind == 'prize': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
     if kind == 'quote': return f'<figure class="card"><blockquote>{inner}</blockquote><figcaption>{top}</figcaption></figure>'
     tag = {'dodont': ('Не стоит' if mod == 'dont' else 'Приветствуется')}.get(kind, '')
     badge = f'<span class="badge">{tag}</span>' if tag else ''
@@ -304,14 +308,14 @@ def nomination(n):
     <div class="help"><p>Не знаете, какую номинацию выбрать или как оформить заявку? Читайте бриф с советами членов жюри <a href="ai-navigator.html">AI-Навигатор 2.0</a> и <a href="protocol.html">Положение премии</a>.</p></div>
   </div>
 </div>{other_noms(n["slug"])}</div></main>'''
-    return page(nom_file(n['slug']), f'Номинация «{n["title"]}» премии Generation AI Awards', lead, b, 'nom')
+    return page(nom_file(n['slug']), f'Номинация «{n["title"]}» премии Generation AI Awards', lead, b, 'nom', 'nom-page')
 
 def special(slug, src, title, desc):
     h1, lead, meta, body, cover = render_md((DATA / src).read_text(encoding='utf-8'))
     lead_block = f'<p class="lead">{lead}</p>' if lead else ''
     b = f'''<section class="phead"><div class="wrap narrow">{crumbs(("Номинации", "index.html#nom"), (NOM_TITLE[slug], None))}<h1 class="long">{esc(h1)}</h1>{lead_block}</div></section>
 <main><div class="wrap narrow"><article class="prose">{body}</article></div><div class="wrap">{other_noms(slug)}</div></main>'''
-    return page(nom_file(slug), title, desc, b, 'nom')
+    return page(nom_file(slug), title, desc, b, 'nom', 'nom-page nom-text')
 
 if __name__ == '__main__':
     made = []

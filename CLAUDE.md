@@ -27,8 +27,8 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - `jury.txt` — `J: Name | Role`. Photos are mapped in `JURY_PH` in build.py.
 - `noms.py` — nominations: slug, title, description, criteria. Also feeds section 5 of protocol.html via `[[CRITERIA]]`.
 - `ai_navigator.md`, `analytical_review.md`, `protocol.md`, `ink.md`, `choice.md` — Markdown plus site blocks:
-  - `:::kind` … `+++` (next card, optional modifier e.g. `+++ dont`) … `:::` → card grid. Kinds: intro, qa, callouts, steps, versus, dodont, experts, icons, template, quote, test, trends, duo (styled in site.css as `.blk-<kind>`).
-  - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`.
+  - `:::kind` … `+++` (next card, optional modifier e.g. `+++ dont`) … `:::` → card grid. Kinds: intro, qa, callouts, steps, versus, dodont, experts, icons, template, quote, test, trends, duo, prize (large photo + quote), highlight (bright lime plate around a whole section, its `## heading` inside) — styled in site.css as `.blk-<kind>`.
+  - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`, `!figure URL | alt` (large image, used by `prize`).
   - `C: Company | type | task | solution | result | nomination` → case card (logo looked up by company name, `LOGO` in build.py).
   - `[[CTA text | button | href]]`, `[[META a | b]]`, `[[COVER url]]`, `[[TOC]]`.
 - `gal2026.txt`, `gallery_2025.txt` — gallery photo paths, one per line, local WebP files in `images/gallery-<year>/` (2026 page also shows `statuettes-2026.jpg` first).
@@ -45,6 +45,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Organizer block: H2 «Организатор премии», horizontal Just AI logo `assets/justai.svg` centred on a plate styled like the partner/participant cells (`.oplate`), plate and text top-aligned.
 - Index gallery: equal-height photos, natural width, endless loop (two identical sets).
 - Gallery pages show the ceremony video above the photos (`GAL_VIDEO` in build.py).
+- Nomination pages (`body.nom-page`): criteria as cards, apply + help plates in one row, 180px between blocks. Text nominations (`nom-text`: Инк, Выбор генеративного AI) keep the intro paragraph next to the lead; their H2 sections are 180px apart.
 - Header: logo image; the current page's link is lime (`aria-current`, `.dd.on` on inner pages; scroll-spy `.on` for #about/#nom on index.html).
 - No custom cursor, no variants panel (both removed on purpose — don't bring back).
 - index.html opens at the top: the timeline tabs scroll only their own strip, never the page.
