@@ -601,7 +601,14 @@ section{position:relative}
 .howto .steps{display:grid;grid-template-rows:1fr 1fr;gap:12px}
 .howto .steps>div{background:var(--bg3);border-radius:18px;padding:20px 22px;font-size:15px;font-weight:500}
 .howto b{display:block;color:var(--acc);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-.howto .nav2{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:26px;background:linear-gradient(110deg,var(--violet),#5a2bd6)}
+.howto .nav2{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:26px;background:linear-gradient(120deg,#c6f766,#b5f08a 55%,#9fe0b4);color:#0a0a0a}
+/* AI-Навигатор on green: dark text, dark button */
+.howto .nav2 .kicker{color:rgba(10,10,10,.65)}
+.howto .nav2 .rtitle em{color:var(--violet)}
+.howto .nav2 .rlead{color:rgba(10,10,10,.8)}
+.howto .nav2 .btn{background:#0a0a0a;color:#fff}
+.howto .nav2 .btn::after{background:#fff}
+.howto .nav2:hover .btn{color:#0a0a0a}
 @media (max-width:900px){.howto{grid-template-columns:1fr}}
 
 /* variant A: spines */
@@ -676,8 +683,7 @@ section{position:relative}
 [data-qr="lime"] .quote .rbox{background:#0a0a0a;color:#fff}
 [data-qr="lime"] .quote .rbox .kicker{color:#9a9a9a}
 /* lighter quote on lime: serif lead, regular body, quiet signature */
-[data-qr="lime"] .qgrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
-[data-qr="lime"] .qmain{max-width:600px}
+[data-qr="lime"] .qgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center}   /* equal halves, 12px apart: the review card matches the AI-Навигатор card */
 [data-qr="lime"] .quote .mark{font-size:64px;height:30px}
 [data-qr="lime"] .quote blockquote{font-size:clamp(16px,1.25vw,19px);font-weight:500;line-height:1.55}
 [data-qr="lime"] .quote blockquote .lead{display:block;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:500;font-size:1.55em;line-height:1.2;margin-bottom:12px}
