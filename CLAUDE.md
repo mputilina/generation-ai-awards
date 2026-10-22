@@ -36,6 +36,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 ## Conventions and decisions already made
 
 - Design: dark background, lime accent `#c6f766`, violet `#2720a7`, Montserrat. All H2 are 40px max (`clamp(28px,3.2vw,40px)`).
+- Premium name in Unbounded SemiBold (Google Fonts, weight 600): first-screen title and the footer wordmark on every page.
 - First screen (`data-hero="photo"`): the owner's night-hills image `images/hero.webp` as background (`#hbg`) with a light parallax (scroll + pointer). Centred column: «2 декабря» pill, title in one size (both lines), subtitle in sentence case without the GenAI outline, button. No number plates. Alternative drawn looks remain: `data-hero="garden"` (canvas garden) and `"ribbons"`.
 - Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
 - All quotes are italic (main-page chair quote and participant reviews, `.prose blockquote`, advice cards); signatures (name, role) stay upright.

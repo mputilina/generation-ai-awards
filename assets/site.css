@@ -224,6 +224,8 @@ main{padding-bottom:var(--sec)}
 .ftr a:hover{color:var(--acc)}
 .ftr .about{color:var(--mute);font-size:14px;max-width:420px}
 .ftr .huge{font-size:clamp(30px,6.8vw,124px);font-weight:900;letter-spacing:-.05em;line-height:.8;margin-top:70px;white-space:nowrap;overflow:hidden;color:var(--acc);padding-right:.08em}
+/* footer wordmark in Unbounded SemiBold, like the first-screen title */
+.ftr .huge{font-family:Unbounded,Montserrat,Arial,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1}
 .ftr .bot{display:flex;justify-content:space-between;color:var(--dim);font-size:13px;margin-top:30px;flex-wrap:wrap;gap:10px}
 
 /* ---------- responsive ---------- */
