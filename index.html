@@ -259,9 +259,12 @@ section{position:relative}
 
 /* ---------- logos: colour, static, no tricks ---------- */
 .logos{padding:var(--sec) 0}
-.lgrid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:40px}
-.lgrid div{height:clamp(84px,8.4vw,124px);border-radius:16px;background:#fff;display:grid;place-items:center}
-.lgrid img{width:80%;height:46%;object-fit:contain}
+/* participants: the same hairline table as the partners, 6 per row */
+.lgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:40px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.lgrid div{height:clamp(110px,11vw,160px);display:grid;place-items:center;background:var(--bg);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lgrid img{width:56%;height:34%;object-fit:contain}
+.lgrid .fill{display:none}
+@media (min-width:901px){.lgrid .fill{display:block}}   /* empty cells close the last row of six */
 @media (max-width:900px){.lgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:480px){.lgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* participants on the pearl backdrop: colour logos, light cells */
@@ -269,7 +272,8 @@ section{position:relative}
 [data-s-logos="pearl"] .logos .kicker{color:#4a4a55}
 [data-s-logos="pearl"] .logos .kicker[data-n]::before{color:#2720a7}
 [data-s-logos="pearl"] .logos .kicker[data-n]::after{background:linear-gradient(90deg,#2720a7,transparent)}
-[data-s-logos="pearl"] .lgrid div{background:rgba(255,255,255,.6);border:1px solid rgba(39,32,167,.08);box-shadow:0 6px 18px rgba(39,32,167,.06)}
+[data-s-logos="pearl"] .lgrid{border-color:rgba(39,32,167,.12)}
+[data-s-logos="pearl"] .lgrid div{background:rgba(255,255,255,.45);border-color:rgba(39,32,167,.12)}
 [data-s-logos="pearl"] .lgrid img{mix-blend-mode:multiply}
 /* partners on the pearl backdrop: colour logos in every presentation */
 [data-s-partners="pearl"] .plogos{background:var(--pearl);color:#0a0a0a}
@@ -1238,7 +1242,8 @@ $('#juryRail').innerHTML = JURY.map(j => `<div class="jc"><div class="ph"><span 
 const galSet = `<div class="gi"><img src="statuettes-2026.jpg" alt="Статуэтки Generation AI Awards 2026"></div>`
   + GAL.slice(1).map(g => `<div class="gi"><img src="${T+g}" alt=""></div>`).join('');
 $('#galRail').innerHTML = galSet + galSet.replace(/<div class="gi">/g, '<div class="gi" aria-hidden="true">');
-$('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/participants/${f}.svg" alt="${name}" loading="lazy"></div>`).join('');
+$('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/participants/${f}.svg" alt="${name}" loading="lazy"></div>`).join('')
+  + '<div class="fill" aria-hidden="true"></div>'.repeat((6 - LOGOS.length % 6) % 6);
 
 /* benefits, three layouts */
 const pad2 = i => String(i+1).padStart(2,'0');
