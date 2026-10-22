@@ -58,7 +58,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 
 ## Open items
 
-- Winner logos missing (show company name instead): VisionLabs, А101, Botamin, Semantica AI, target ai, СберЗдоровье, ITQuick.
+- Winner logos missing on «Лауреаты 2025» (show company name instead): target ai, СберЗдоровье, ITQuick. 2026 is complete; Botamin's file is tiny (82×29), a larger one would look better.
 - Owner plans a redesign later and plans to host on GitHub Pages (public repo, root folder).
 
 ## Working with the owner
