@@ -264,7 +264,7 @@ section{position:relative}
 .t2:hover .avs img:nth-child(odd){transform:translateY(-6px)}
 .t3{background:var(--acc);color:#0a0a0a;border:0}
 .t3 .n,.t3 p{color:rgba(0,0,0,.6)}
-.big{font-size:clamp(52px,5.6vw,92px);font-weight:900;letter-spacing:-.04em;line-height:.9;margin-top:auto}
+.big{font-size:clamp(52px,5.6vw,92px);font-weight:600;letter-spacing:-.04em;line-height:.9;margin-top:auto}
 .t5{grid-column:span 2;background:var(--violet);border:0}
 .t5 .n,.t5 p{color:#c7d2e9}
 .tmq{overflow:hidden;margin:16px -22px 6px;mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
@@ -642,9 +642,9 @@ section{position:relative}
 [data-nom="cards"] .spines{display:none}
 [data-nom="cards"] .cards{display:grid}
 .nc{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;padding:22px;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .5s var(--ease);cursor:pointer;isolation:isolate;background:var(--bg3)}
-.nc .art{position:absolute;inset:0;z-index:-2;transition:transform .8s var(--ease),filter .6s;filter:saturate(.7) brightness(.75)}
-.nc:hover .art{transform:scale(1.08);filter:none}
-.nc::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.22),transparent 60%);opacity:0;transition:opacity .3s}
+/* nomination cards: same plain card as «Оценка» and «Опыт» in the benefits block, no gradient art */
+.cards .nc{background:var(--bg2);border:1px solid var(--line)}
+.nc::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(198,247,102,.22),transparent 60%);opacity:0;transition:opacity .3s}   /* brand-green glow follows the cursor */
 .nc:hover::before{opacity:1}
 .nc h3{margin-top:auto;font-size:21px;line-height:1.15;font-weight:700;transform:translateZ(40px)}
 .nc .go{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;background:var(--acc);color:#000;display:grid;place-items:center;font-size:18px;transform:scale(0) rotate(-90deg);transition:transform .45s var(--ease)}
@@ -1337,7 +1337,7 @@ $('#bento').innerHTML = `
   <div class="bt t6"><span class="n">06 · PR · что говорят участники</span><div class="qrot">${REVS.map((r,i)=>`<div class="qi${i?'':' on'}"><q>${r[1]}</q><div class="who"><img src="${r[2]}" alt="">${r[0]}</div></div>`).join('')}</div>
     <div class="qdots">${REVS.map((r,i)=>`<button class="${i?'':'on'}" data-i="${i}" aria-label="Отзыв ${i+1}"></button>`).join('')}</div></div>`;
 
-$('#cards').innerHTML = NOMS.slice(0, -1).map((n,i) => `<a class="nc" href="${NOM_URL[i]}"><div class="art" style="background:${art(i)}"></div><span class="go" aria-hidden="true">↗</span><h3>${n}</h3></a>`).join('');
+$('#cards').innerHTML = NOMS.slice(0, -1).map((n,i) => `<a class="nc" href="${NOM_URL[i]}"><span class="go" aria-hidden="true">↗</span><h3>${n}</h3></a>`).join('');
 $('#faqList').innerHTML = FAQ.map(f => `<div class="qa"><button data-cur="Ответ"><span>${f[0]}</span><span class="pm"></span></button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join('');
 
 /* ---------- reveal on view ---------- */
