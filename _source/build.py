@@ -336,7 +336,7 @@ if __name__ == '__main__':
     g25 = [l for l in (DATA / 'gallery_2025.txt').read_text().split()] if (DATA / 'gallery_2025.txt').exists() else []
     made.append(gallery(2025, g25, 'g25'))
     made.append(article('ai-navigator.html', 'ai_navigator.md', 'AI-Навигатор 2.0',
-                        'Пошаговое руководство для оформления заявок для премии Generation AI Awards', 'AI-Навигатор 2.0', 'nav'))
+                        'Пошаговое руководство для оформления заявок для премии Generation AI Awards', 'AI-Навигатор 2.0', 'nav', side_toc=True))
     made.append(article('analytical-review.html', 'analytical_review.md',
                         'От чат-бота к агенту: как генеративный AI изменил рынок в 2026 | Generation AI Awards',
                         'Аналитика по 200+ проектам премии: тренды по отраслям, живые кейсы с цифрами и главный вывод — бизнес научился применять AI избирательно.',
