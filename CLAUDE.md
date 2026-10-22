@@ -48,7 +48,8 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Nominations on index.html are cards that are plain links to `nomination-*.html`.
 - Nomination pages have no forms. "Заполнить заявку" links to the live form: `APPLY_BASE` in build.py (`https://awards.generation-ai.ru/nomination/<slug>`). Note the live "Выбор генеративного AI" URL has a typo, `/nomintaion/opensource`; it is correct as is.
 - External on purpose: Кейсориум (generation-ai.ru), the "Что думают члены жюри…" article, privacy policy PDF, Telegram links.
-- Images (logos, jury photos, gallery) hotlink tildacdn.com.
+- Partner logos on index.html are local SVGs in `assets/partners/` (`PLOGOS`), shown in colour on the pearl backdrop.
+- Other images (participant/winner logos, gallery) hotlink tildacdn.com.
 
 ## Open items
 

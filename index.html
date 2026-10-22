@@ -347,7 +347,7 @@ section{position:relative}
 .pl-grid{grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .pl-grid div{position:relative;height:clamp(110px,11vw,160px);display:grid;place-items:center;background:var(--bg);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
 .pl-grid small{position:absolute;left:14px;top:12px;font:500 11px ui-monospace,Consolas,monospace;color:var(--dim);transition:color .3s}
-.pl-grid img{height:clamp(54px,5.4vw,84px);width:auto;max-width:78%;object-fit:contain;transition:transform .5s var(--ease)}
+.pl-grid img{width:100%;height:auto;transition:transform .5s var(--ease)}
 .pl-grid div::after{content:"";position:absolute;inset:10px;border:1px solid var(--acc);border-radius:10px;opacity:0;transform:scale(.94);transition:opacity .3s,transform .45s var(--ease);pointer-events:none}
 .pl-grid div:hover::after{opacity:1;transform:none}
 .pl-grid div:hover img{transform:scale(1.08)}
@@ -1303,11 +1303,12 @@ function tickMq(){
 }
 if (!RM) requestAnimationFrame(tickMq);
 
-const PLOGOS = ['tild3061-3738-4137-b438-613836653037/___.png','tild6263-3863-4461-b764-633366366462/Skolkovo.png','tild3131-3936-4233-b432-613763383738/rb.png','tild3561-3965-4938-b934-613563303264/SPB_IT_RU.png','tild3666-6135-4438-a233-346135393466/ICT_2_GO.png','tild3436-6632-4263-a637-663436643065/ICT.png','tild3164-3031-4664-b936-366665623061/it_world.png','tild6132-3238-4163-a564-613263306534/B_O.png'];
-$('#plgrid').innerHTML = PLOGOS.map((l,i) => `<img src="${T+l}" alt="" loading="lazy"><svg class="xs"><use href="#x${i%2+1}"/></svg>`).join('').repeat(2);
+/* partner logos: the owner's SVGs, one 550×197 artboard each with the padding built in */
+const PLOGOS = ['inc','skolkovo','rb','spb-it-ru','ict-2-go','ict','it-world','b-o'].map(n => `assets/partners/${n}.svg`);
+$('#plgrid').innerHTML = PLOGOS.map((l,i) => `<img src="${l}" alt="" loading="lazy"><svg class="xs"><use href="#x${i%2+1}"/></svg>`).join('').repeat(2);
 
 /* media partners: grid / orbit / flow */
-const ko = l => `<img class="ko" src="${T+l}" alt="" loading="lazy">`;
+const ko = l => `<img class="ko" src="${l}" alt="" loading="lazy">`;
 $('#plGrid').innerHTML = PLOGOS.map((l,i) => `<div><small>${pad2(i)}</small>${ko(l)}</div>`).join('');
 $('#plRing').innerHTML = PLOGOS.map(l => `<span class="oi">${ko(l)}</span>`).join('');
 $('#plN').textContent = PLOGOS.length;
