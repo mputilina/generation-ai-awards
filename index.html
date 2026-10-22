@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Generation AI Awards — концепт редизайна</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@1,400..900&family=Caveat:wght@500;700&family=Unbounded:wght@600&display=swap" rel="stylesheet">
@@ -601,14 +602,7 @@ section{position:relative}
 .howto .steps{display:grid;grid-template-rows:1fr 1fr;gap:12px}
 .howto .steps>div{background:var(--bg3);border-radius:18px;padding:20px 22px;font-size:15px;font-weight:500}
 .howto b{display:block;color:var(--acc);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-.howto .nav2{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:26px;background:linear-gradient(120deg,#c6f766,#b5f08a 55%,#9fe0b4);color:#0a0a0a}
-/* AI-Навигатор on green: dark text, dark button */
-.howto .nav2 .kicker{color:rgba(10,10,10,.65)}
-.howto .nav2 .rtitle em{color:var(--violet)}
-.howto .nav2 .rlead{color:rgba(10,10,10,.8)}
-.howto .nav2 .btn{background:#0a0a0a;color:#fff}
-.howto .nav2 .btn::after{background:#fff}
-.howto .nav2:hover .btn{color:#0a0a0a}
+.howto .nav2{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:26px;background:linear-gradient(110deg,#1b1678,#3b20a0)}   /* the original violet, a shade darker */
 @media (max-width:900px){.howto{grid-template-columns:1fr}}
 
 /* variant A: spines */
@@ -683,7 +677,8 @@ section{position:relative}
 [data-qr="lime"] .quote .rbox{background:#0a0a0a;color:#fff}
 [data-qr="lime"] .quote .rbox .kicker{color:#9a9a9a}
 /* lighter quote on lime: serif lead, regular body, quiet signature */
-[data-qr="lime"] .qgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center}   /* equal halves, 12px apart: the review card matches the AI-Навигатор card */
+[data-qr="lime"] .qgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center}   /* equal halves: the review card matches the AI-Навигатор card */
+[data-qr="lime"] .qmain{max-width:600px}   /* the quote keeps its reading width */
 [data-qr="lime"] .quote .mark{font-size:64px;height:30px}
 [data-qr="lime"] .quote blockquote{font-size:clamp(16px,1.25vw,19px);font-weight:500;line-height:1.55}
 [data-qr="lime"] .quote blockquote .lead{display:block;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:500;font-size:1.55em;line-height:1.2;margin-bottom:12px}
