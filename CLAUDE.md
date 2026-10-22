@@ -23,7 +23,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 
 ## Content sources (`_source/data/`)
 
-- `shortlist_2026.txt`, `shortlist_2025.txt` — `## Nomination`, `W: logo | Company | Project` (winner), `F: logo | Company | Project` (finalist). Logo is a path on thb.tildacdn.com, a full URL, or `-` for none.
+- `shortlist_2026.txt`, `shortlist_2025.txt` — `## Nomination`, `W: logo | Company | Project` (winner), `F: logo | Company | Project` (finalist). Logo is a local path (`images/logos/*.webp`) or `-` for none.
 - `jury.txt` — `J: Name | Role`. Photos are mapped in `JURY_PH` in build.py.
 - `noms.py` — nominations: slug, title, description, criteria. Also feeds section 5 of protocol.html via `[[CRITERIA]]`.
 - `ai_navigator.md`, `analytical_review.md`, `protocol.md`, `ink.md`, `choice.md` — Markdown plus site blocks:
@@ -53,7 +53,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - External on purpose: Кейсориум (generation-ai.ru), the "Что думают члены жюри…" article, privacy policy PDF, Telegram links.
 - Partner logos on index.html are local SVGs in `assets/partners/`, listed with their links in `PARTNERS` (order, name, URL); each cell is a link opening in a new tab, no numbers.
 - Participant logos on index.html are local SVGs in `assets/participants/`, listed in `LOGOS` (file, name); same hairline table as the partners, 6 per row (4 under 900px, 2 under 480px); empty `.fill` cells close the last row of six.
-- Goal: no Tilda dependency. Main page photos (`GAL`, video poster, quote photo) are local. Still on tildacdn.com: 3 review logos on index.html (`REVS`), winner/finalist logos (`shortlist_*.txt`, `LOGO` in build.py), images in `ai_navigator.md` / `analytical_review.md`. This sandbox's network policy blocks tildacdn.com, so they can't be downloaded until the owner allows it.
+- No Tilda dependency: every image is a local file. Winner/finalist and review logos live in `images/logos/` (WebP, trimmed to the logo on white), article images in `images/articles/`. Never hotlink tildacdn.com again.
 
 ## Open items
 

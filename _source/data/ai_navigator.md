@@ -2,7 +2,7 @@
 
 **Пошаговое руководство для оформления заявок для премии Generation AI Awards**
 
-[[COVER https://static.tildacdn.com/tild3631-3037-4361-a535-373635356431/Facebook_post_-_1.png]]
+[[COVER images/articles/cover.webp]]
 
 :::intro
 Конкуренция на Generation AI Awards начинается не в момент голосования, а на этапе подачи. В прошлом сезоне **каждая четвертая заявка была отклонена после модерации**. Основные причины: дублирование проектов, нарушение регламента (не более 3-х заявок на компанию) и слабое описание кейсов.
@@ -138,15 +138,15 @@
 ## Лайфхаки оформления
 
 :::icons
-!icon https://static.tildacdn.com/lib/icons/tilda/target_task.svg
+!icon images/articles/icons/target-task.svg
 ### Заголовок важен
 Вместо «Внедрение GenAI в отдел закупок» напишите «AI-ассистент закупщика: как мы сэкономили 1000 часов в месяц на тендерах».
 +++
-!icon https://static.tildacdn.com/lib/icons/tilda/structure_map.svg
+!icon images/articles/icons/structure-map.svg
 ### Четкая структура
 Жюри читает по диагонали. Используйте жирный шрифт для ключевых цифр и заголовков. Делайте списки. Пишите просто и понятно.
 +++
-!icon https://static.tildacdn.com/lib/icons/tilda/strategy_step_progress.svg
+!icon images/articles/icons/strategy-step-progress.svg
 ### Доступ к демо
 Проверьте, что ссылка на видео открывается без пароля и VPN. Часть заявок теряет баллы просто потому, что ссылка не открылась.
 :::

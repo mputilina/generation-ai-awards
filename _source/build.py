@@ -9,7 +9,6 @@ ROOT = pathlib.Path(__file__).parent
 DATA = ROOT / 'data'
 OUT = ROOT.parent
 OUT.mkdir(exist_ok=True)
-T = 'https://thb.tildacdn.com/'
 esc = html.escape
 
 exec((DATA / 'noms.py').read_text(encoding='utf-8'))      # -> NOMS
@@ -87,7 +86,7 @@ def page(fname, title, desc, body, active=''):
 
 # ---------- markdown with a few site-specific blocks ----------
 LOGO = {}   # company name -> logo URL, collected from the winners lists
-def logo_url(x): return x if x.startswith('http') else T + x
+def logo_url(x): return x   # local path (images/logos/*.webp) or a full URL
 def load_logos():
     for f in ['shortlist_2026.txt', 'shortlist_2025.txt']:
         for ln in (DATA / f).read_text(encoding='utf-8').split('\n'):
@@ -97,10 +96,10 @@ def load_logos():
     for c, a in {'Сбер': 'Сбер', 'ИТ Икс 5 Технологии': 'ИТ Икс 5 Технологии', 'Билайн': 'Вымпелком', 'МТС': None,
                  'Совкомбанк Страхование': 'Совкомбанк', 'ГК «Солар»': 'ГК Солар', 'Северсталь': 'Северсталь'}.items():
         if a and a in LOGO: LOGO.setdefault(c, LOGO[a])
-    LOGO.setdefault('ВТБ', 'https://static.tildacdn.com/tild6231-3935-4366-b363-633864343963/VTB.png')
-    LOGO.setdefault('ВкусВилл', 'https://static.tildacdn.com/tild3639-3131-4130-b135-623737346138/Vkusvill.png')
-    LOGO.setdefault('Московская Биржа', 'https://static.tildacdn.com/tild3866-3862-4365-a463-663062313365/MOEX.png')
-    LOGO.setdefault('Колесо.ру', 'https://static.tildacdn.com/tild3335-3030-4133-b132-636433393065/koleso.png')
+    LOGO.setdefault('ВТБ', 'images/logos/vtb.webp')
+    LOGO.setdefault('ВкусВилл', 'images/logos/vkusvill.webp')
+    LOGO.setdefault('Московская Биржа', 'images/logos/moex.webp')
+    LOGO.setdefault('Колесо.ру', 'images/logos/koleso.webp')
 load_logos()
 
 def case_html(line):
