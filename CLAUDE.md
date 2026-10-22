@@ -36,6 +36,12 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 ## Conventions and decisions already made
 
 - Design: dark background, lime accent `#c6f766`, violet `#2720a7`, Montserrat. All H2 are 40px max (`clamp(28px,3.2vw,40px)`).
+- Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
+- Buttons have no arrows. Carousel ←/→ controls stay.
+- Jury photos are local: `assets/jury/<surname>.webp` (4:3, colour, no grayscale). Map in `JURY_PH` (build.py) and `JURY` (index.html).
+- Index nominations: 12 cards in a 4-column grid, no numbers; the «Инк» special prize is a separate full-width plate below.
+- Index gallery: equal-height photos, natural width, endless loop (two identical sets).
+- Gallery pages show the ceremony video above the photos (`GAL_VIDEO` in build.py).
 - Header: logo image; the current page's link is lime (`aria-current`, `.dd.on` on inner pages; scroll-spy `.on` for #about/#nom on index.html).
 - No custom cursor, no variants panel (both removed on purpose — don't bring back).
 - index.html opens at the top: the timeline tabs scroll only their own strip, never the page.
@@ -48,7 +54,6 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 
 - Winner logos missing (show company name instead): VisionLabs, А101, Botamin, Semantica AI, target ai, СберЗдоровье, ITQuick.
 - Gallery 2025 has no photos (page shows a placeholder).
-- Jury photos exist only for 7 of 20 members; others show initials.
 - Owner plans a redesign later and plans to host on GitHub Pages (public repo, root folder).
 
 ## Working with the owner

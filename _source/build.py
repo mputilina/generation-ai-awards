@@ -44,7 +44,7 @@ def header(active=''):
       <a href="{EXPERT_VIEW}" target="_blank" rel="noopener"><b>Что думают члены жюри о будущем GenAI в России?</b><span>Взгляд AI-экспертов Generation AI Awards</span></a>
       <a href="analytical-review.html"{cur('rev')}><b>От чат-бота к агенту</b><span>Аналитический обзор по итогам 2026: тренды и отраслевые кейсы</span></a></div></div>
   </nav>
-  <a href="shortlist-2026.html" class="btn ghost"><span class="long">Смотреть победителей</span><span class="short">Победители</span><span class="arr">→</span></a>
+  <a href="shortlist-2026.html" class="btn ghost"><span class="long">Смотреть победителей</span><span class="short">Победители</span></a>
 </header>'''
 
 def main_footer():
@@ -170,7 +170,7 @@ def render_md(text):
         flush()
         m = re.match(r'\[\[CTA (.+?) \| (.+?) \| (.+?)\]\]', ln)
         if m:
-            out.append(f'<div class="cta"><p>{esc(m[1])}</p><a class="btn" href="{esc(m[3])}"><span>{esc(m[2])}</span><span class="arr">→</span></a></div>')
+            out.append(f'<div class="cta"><p>{esc(m[1])}</p><a class="btn" href="{esc(m[3])}"><span>{esc(m[2])}</span></a></div>')
             continue
         out.append(ln)
     flush()
@@ -247,15 +247,12 @@ def winners(fname, src, year, active):
     return page(fname, f'Шорт-лист премии Generation AI {year}', desc, b, active)
 
 # ---------- jury ----------
-JURY_PH = {
- 'AION': 'https://static.tildacdn.com/tild3264-6338-4632-b831-656639346265/AION.png',
- 'Андрей Рыбинцев': 'https://static.tildacdn.com/tild6166-3533-4637-b463-323936323537/photo.png',
- 'Максим Волошин': 'https://static.tildacdn.com/tild3864-3437-4064-a464-633635333461/photo.png',
- 'Юлия Пивоварова': 'https://static.tildacdn.com/tild6261-3362-4638-b332-343431303232/photo.png',
- 'Михаил Неверов': 'https://static.tildacdn.com/tild3938-3339-4430-b635-316234373065/photo.png',
- 'Константин Паршин': 'https://static.tildacdn.com/tild3366-3463-4062-a262-366539376266/photo.png',
- 'Владимир Сидоров': 'https://static.tildacdn.com/tild3236-3966-4638-b863-646636613339/photo.png',
-}
+JURY_PH = {name: f'assets/jury/{slug}.webp' for name, slug in [
+ ('AION', 'aion'), ('Андрей Рыбинцев', 'rybintsev'), ('Максим Волошин', 'voloshin'), ('Юлия Пивоварова', 'pivovarova'),
+ ('Михаил Неверов', 'neverov'), ('Константин Паршин', 'parshin'), ('Владимир Сидоров', 'sidorov'), ('Валерий Кардашов', 'kardashov'),
+ ('Дмитрий Мацера', 'matsera'), ('Наталья Балыбердина', 'balyberdina'), ('Артур Самигуллин', 'samigullin'), ('Дмитрий Васильев', 'vasiliev'),
+ ('Роман Куцев', 'kutsev'), ('Павел Новиков', 'novikov'), ('Юрий Денисов', 'denisov'), ('Аркадий Сандлер', 'sandler'),
+ ('Денис Кузнецов', 'kuznetsov'), ('Дмитрий Шевелев', 'shevelev'), ('Алексей Жабин', 'zhabin'), ('Вячеслав Тарасов', 'tarasov')]}
 def jury():
     txt = (DATA / 'jury.txt').read_text(encoding='utf-8').split('\n')
     cards = []
@@ -272,7 +269,12 @@ def jury():
     return page('jury.html', 'Жюри', txt[1][2:], b)
 
 # ---------- galleries ----------
+# ceremony video shown at the top of each gallery page
+GAL_VIDEO = {2026: 'https://just-ai.com/video/GEN_AI_AWARDS_26_1.mp4', 2025: 'https://just-ai.com/video/LOFT_HALL_50.mp4'}
+
 def gallery(year, imgs, active):
+    vid = GAL_VIDEO.get(year)
+    video = f'<div class="gvid"><video src="{vid}" controls playsinline preload="metadata"></video></div>' if vid else ''
     if imgs:
         shots = ''.join(f'<button data-full="{src}" aria-label="Открыть фото {i}"><img src="{src}" alt="Generation AI Awards {year}, фото {i}" loading="lazy"></button>'
                         for i, src in enumerate(imgs, 1))
@@ -280,9 +282,9 @@ def gallery(year, imgs, active):
     else:
         content = ('<div class="empty"><b>Фотографии 2025 года пока не добавлены</b>'
                    '<p>Положите снимки в папку <code>images/gallery-2025/</code> и перечислите их в <code>data/gallery_2025.txt</code>, затем пересоберите сайт.</p>'
-                   '<a class="btn ghost" href="gallery-2026.html"><span>Смотреть галерею 2026</span><span class="arr">→</span></a></div>')
+                   '<a class="btn ghost" href="gallery-2026.html"><span>Смотреть галерею 2026</span></a></div>')
     b = f'''<section class="phead"><div class="wrap">{crumbs((f"Галерея {year} год", None))}<h1>{year} год</h1><p class="lead">Самые яркие моменты премии Generation AI Awards {year}</p></div></section>
-<main><div class="wrap">{content}</div></main>'''
+<main><div class="wrap">{video}{content}</div></main>'''
     return page(f'gallery-{year}.html', f'Галерея {year} год', f'Самые яркие моменты Премии Generation AI Awards {year}', b, active)
 
 # ---------- nominations ----------
@@ -294,7 +296,7 @@ def nomination(n):
     crit = ''.join(f'<details><summary>{esc(a)}</summary><p>{esc(b)}</p></details>' for a, b in n['crit'])
     lead = n.get('lead') or n['desc']
     apply = APPLY_BASE + n['slug']
-    btn = f'<a class="btn" href="{apply}" target="_blank" rel="noopener"><span>Заполнить заявку</span><span class="arr">→</span></a>'
+    btn = f'<a class="btn" href="{apply}" target="_blank" rel="noopener"><span>Заполнить заявку</span></a>'
     b = f'''<section class="phead"><div class="wrap">{crumbs(("Номинации", "index.html#nom"), (n["title"], None))}<h1 class="long">Номинация «{esc(n["title"])}»</h1><p class="lead">{esc(lead)}</p><div class="ph-cta">{btn}</div></div></section>
 <main><div class="wrap"><div class="crit">
   <h2>Критерии оценки номинации</h2>{crit}

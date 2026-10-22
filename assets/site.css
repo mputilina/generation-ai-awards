@@ -6,6 +6,8 @@
   --lime:#c6f766; --coral:#ff8562; --violet:#2720a7; --violet2:#4b44e0;
   --acc:var(--lime); --acc-ink:#0a0a0a;
   --r:22px; --pad:clamp(16px,4vw,56px);
+  --field:1440px;   /* content field: every page's content sits inside it */
+  --sec:180px;      /* vertical padding of every block */
   --ease:cubic-bezier(.2,.8,.2,1);
   color-scheme:dark;
 }
@@ -16,11 +18,12 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
-.wrap{padding:0 var(--pad);max-width:1440px;margin:0 auto}
-.narrow{max-width:860px}
+.wrap{width:min(var(--field),100% - 2*var(--pad));margin:0 auto}
+/* reading pages keep a comfortable text column, aligned to the left edge of the field */
+.narrow>.prose{max-width:860px}
 
 /* ---------- header (same as main page) ---------- */
-.hdr{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(1200px,calc(100% - 28px));display:flex;align-items:center;gap:20px;padding:10px 10px 10px 22px;border-radius:999px;background:rgba(19,19,19,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.08)}
+.hdr{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(var(--field),calc(100% - 2*var(--pad)));display:flex;align-items:center;gap:20px;padding:10px 10px 10px 22px;border-radius:999px;background:rgba(19,19,19,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.08)}
 .logo{display:block;flex:none}
 .logo img{height:32px;width:auto}
 .nav{display:flex;gap:4px;margin-left:auto}
@@ -54,15 +57,13 @@ img{display:block;max-width:100%}
 .btn>*{position:relative;z-index:1}
 .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
 .btn.ghost:hover{color:#000}
-.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
-.btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
 .hdr .btn{padding:11px 18px;font-size:14px}
 
 /* ---------- page head ---------- */
 .crumbs{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-bottom:26px}
 .crumbs a:hover{color:var(--acc)}
 .crumbs span[aria-hidden]{color:var(--dim)}
-.phead{padding:150px 0 56px;position:relative;overflow:hidden}
+.phead{padding:var(--sec) 0 56px;position:relative;overflow:hidden}
 .phead::before{content:"";position:absolute;width:780px;height:780px;right:-260px;top:-380px;border-radius:50%;background:radial-gradient(circle,rgba(75,68,224,.42),transparent 62%);pointer-events:none}
 .phead h1{font-size:clamp(34px,5.4vw,80px);line-height:.98;font-weight:800;letter-spacing:-.025em;max-width:16ch;position:relative}
 .phead h1.long{font-size:clamp(30px,4.2vw,60px);max-width:22ch}
@@ -71,7 +72,7 @@ img{display:block;max-width:100%}
 .meta-row{display:flex;gap:8px 24px;flex-wrap:wrap;margin-top:22px;color:var(--mute);font-size:14px}
 .meta-row span{display:flex;align-items:center;gap:8px}
 .meta-row span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc)}
-main{padding-bottom:110px}
+main{padding-bottom:var(--sec)}
 
 /* ---------- prose (articles, regulations) ---------- */
 .prose{font-size:17px;line-height:1.7;color:#e6e6e6}
@@ -144,16 +145,17 @@ main{padding-bottom:110px}
 .fin p{font-size:14px;color:var(--mute);line-height:1.5}
 
 /* ---------- jury ---------- */
-.jgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
-.jc .ph{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:linear-gradient(160deg,#1e1e1e,#121212);position:relative;margin-bottom:14px;border:1px solid var(--line)}
-.jc .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .5s}
-.jc:hover .ph img{filter:none}
+.jgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:90px 18px}
+.jc .ph{aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:linear-gradient(160deg,#1e1e1e,#121212);position:relative;margin-bottom:14px;border:1px solid var(--line)}
+.jc .ph img{width:100%;height:100%;object-fit:cover}
 .jc .ph .mono{position:absolute;inset:0;display:grid;place-items:center;font-size:56px;font-weight:800;color:rgba(198,247,102,.85);letter-spacing:-.03em}
 .jc .ph .ai{background:radial-gradient(circle at 50% 40%,rgba(198,247,102,.35),transparent 60%)}
 .jc h3{font-size:18px;line-height:1.2}
 .jc p{font-size:14px;color:var(--mute);margin-top:6px;line-height:1.45}
 
 /* ---------- gallery ---------- */
+.gvid{margin-bottom:56px;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:16/9}
+.gvid video{display:block;width:100%;height:100%;object-fit:contain}
 .ggrid{columns:3 320px;column-gap:14px}
 .ggrid button{display:block;width:100%;margin-bottom:14px;border-radius:18px;overflow:hidden;break-inside:avoid;background:var(--bg2)}
 .ggrid img{width:100%;height:auto;transition:transform .6s var(--ease)}
@@ -228,12 +230,13 @@ main{padding-bottom:110px}
   .hdr{gap:10px}
   .hdr .btn{margin-left:auto}
   .ngrid,.nomblock{grid-template-columns:1fr;gap:26px}
+  .jgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:60px 16px}
   .apply{position:static}
 }
+@media (max-width:760px){:root{--sec:110px}.jgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 14px}}
 @media (max-width:600px){
   .hdr .btn .long{display:none}
   .ftr .g{grid-template-columns:1fr 1fr}
-  .phead{padding-top:130px}
   .apply{padding:22px}
   .cta{padding:22px}
 }
@@ -243,7 +246,7 @@ main{padding-bottom:110px}
 /* ---------- page head with cover image (navigator, review) ---------- */
 .ph-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
 .cover{width:100%;border-radius:var(--r);border:1px solid var(--line);background:var(--bg2);aspect-ratio:1200/630;object-fit:cover;position:relative}
-.wide-ok{max-width:1100px}
+.wide-ok>.prose{max-width:1100px}
 .wide-ok .prose>p,.wide-ok .prose>ul,.wide-ok .prose>ol,.wide-ok .prose>h2,.wide-ok .prose>h3,.wide-ok .prose>blockquote{max-width:820px}
 .ph-cta{margin-top:30px;position:relative}
 
