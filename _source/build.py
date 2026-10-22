@@ -317,7 +317,8 @@ if __name__ == '__main__':
     made.append(winners('shortlist-2026.html', 'shortlist_2026.txt', 2026, 'w26'))
     made.append(winners('shortlist-2025.html', 'shortlist_2025.txt', 2025, 'w25'))
     made.append(jury())
-    g26 = ['statuettes-2026.jpg'] + ['https://static.tildacdn.com/' + l for l in (DATA / 'gal2026.txt').read_text().split()]
+    # gallery lists hold local paths (images/gallery-<year>/*.webp), one per line
+    g26 = ['statuettes-2026.jpg'] + (DATA / 'gal2026.txt').read_text().split()
     made.append(gallery(2026, g26, 'g26'))
     g25 = [l for l in (DATA / 'gallery_2025.txt').read_text().split()] if (DATA / 'gallery_2025.txt').exists() else []
     made.append(gallery(2025, g25, 'g25'))

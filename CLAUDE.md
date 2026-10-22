@@ -31,7 +31,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
   - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`.
   - `C: Company | type | task | solution | result | nomination` → case card (logo looked up by company name, `LOGO` in build.py).
   - `[[CTA text | button | href]]`, `[[META a | b]]`, `[[COVER url]]`, `[[TOC]]`.
-- `gal2026.txt` — gallery 2026 image paths (static.tildacdn.com). `gallery_2025.txt` does not exist yet.
+- `gal2026.txt`, `gallery_2025.txt` — gallery photo paths, one per line, local WebP files in `images/gallery-<year>/` (2026 page also shows `statuettes-2026.jpg` first).
 
 ## Conventions and decisions already made
 
@@ -53,12 +53,11 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - External on purpose: Кейсориум (generation-ai.ru), the "Что думают члены жюри…" article, privacy policy PDF, Telegram links.
 - Partner logos on index.html are local SVGs in `assets/partners/`, listed with their links in `PARTNERS` (order, name, URL); each cell is a link opening in a new tab, no numbers.
 - Participant logos on index.html are local SVGs in `assets/participants/`, listed in `LOGOS` (file, name); same hairline table as the partners, 6 per row (4 under 900px, 2 under 480px); empty `.fill` cells close the last row of six.
-- Other images (winner logos, gallery) hotlink tildacdn.com.
+- Other images (winner logos, the main page's ceremony strip and benefit photos) hotlink tildacdn.com.
 
 ## Open items
 
 - Winner logos missing (show company name instead): VisionLabs, А101, Botamin, Semantica AI, target ai, СберЗдоровье, ITQuick.
-- Gallery 2025 has no photos (page shows a placeholder).
 - Owner plans a redesign later and plans to host on GitHub Pages (public repo, root folder).
 
 ## Working with the owner
