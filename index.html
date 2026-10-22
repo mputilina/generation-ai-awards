@@ -291,7 +291,7 @@ section{position:relative}
 [data-s-org="pearl"] .org .kicker{color:#4a4a55}
 [data-s-org="pearl"] .org .kicker[data-n]::before{color:#2720a7}
 [data-s-org="pearl"] .org .kicker[data-n]::after{background:linear-gradient(90deg,#2720a7,transparent)}
-[data-s-org="pearl"] .ologo i,[data-s-org="pearl"] .olinks .hand{color:#2720a7}
+[data-s-org="pearl"] .olinks .hand{color:#2720a7}
 [data-s-org="pearl"] .ogrid p:not(.olead){color:#45454f}
 [data-s-org="pearl"] .org .btn.ghost{color:#0a0a0a;box-shadow:inset 0 0 0 1.5px rgba(10,10,10,.35)}
 [data-s-org="pearl"] .org .btn.ghost::after{background:#2720a7}
@@ -450,7 +450,7 @@ section{position:relative}
 [data-s-ticker="spb"] .mq.thin i{color:var(--acc)}
 
 /* cards become glass on the layered background */
-[data-s-ben="spb"] .bt,[data-s-nom="spb"] .howto div,[data-s-nom="spb"] .sp{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border:1px solid var(--line);backdrop-filter:blur(6px)}
+[data-s-ben="spb"] .bt,[data-s-nom="spb"] .howto .steps>div,[data-s-nom="spb"] .sp{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border:1px solid var(--line);backdrop-filter:blur(6px)}
 [data-s-ben="spb"] .t3{background:linear-gradient(160deg,rgba(198,247,102,.16),rgba(198,247,102,.03));color:#fff;border:1px solid rgba(198,247,102,.25)}
 [data-s-ben="spb"] .t3 .n,[data-s-ben="spb"] .t3 p{color:var(--mute)}
 [data-s-ben="spb"] .bento .big,[data-s-tl="spb"] .tpanel .big{background:linear-gradient(100deg,#fff,#c6f766);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -510,7 +510,6 @@ section{position:relative}
 /* organizer and footer keep the same night */
 [data-s-footer="spb"] .ftr{background:linear-gradient(180deg,transparent,rgba(39,32,167,.18));border-top-color:var(--line)}
 [data-s-footer="spb"] .ftr .huge{background:linear-gradient(100deg,#c6f766,#9fe0b4 55%,#8d88f2);-webkit-background-clip:text;background-clip:text;color:transparent}
-[data-s-org="spb"] .ologo i{color:var(--acc)}
 
 /* ---------- per-block switch "как было / новое" ---------- */
 .lsw{position:absolute;right:14px;top:14px;z-index:40;display:flex;align-items:center;gap:2px;padding:3px 3px 3px 12px;border-radius:999px;background:rgba(255,255,255,.94);color:#0a0a0a;font:600 11.5px/1 Montserrat,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35)}
@@ -569,12 +568,11 @@ section{position:relative}
 .nom .head{margin-bottom:46px}
 .nom .head .h2{margin-bottom:40px}
 .nom .h2{font-size:clamp(28px,3.2vw,40px)}
-.howto{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:12px}
-.howto>div{background:var(--bg3);border-radius:18px;padding:20px 22px;font-size:15px;font-weight:500}
+.howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px}
+.howto .steps{display:grid;grid-template-rows:1fr 1fr;gap:12px}
+.howto .steps>div{background:var(--bg3);border-radius:18px;padding:20px 22px;font-size:15px;font-weight:500}
 .howto b{display:block;color:var(--acc);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-.howto .nav2{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(110deg,var(--violet),#5a2bd6);}
-.howto .nav2 .btn{padding:10px 16px;font-size:14px}
-.howto .nav2 .btn{flex:none}
+.howto .nav2{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:26px;background:linear-gradient(110deg,var(--violet),#5a2bd6)}
 @media (max-width:900px){.howto{grid-template-columns:1fr}}
 
 /* variant A: spines */
@@ -625,12 +623,15 @@ section{position:relative}
 .nc:focus-visible{outline:2px solid var(--acc);outline-offset:4px}
 /* special prize: a full-width plate under the grid */
 .nspecial{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;margin-top:14px;padding:clamp(26px,3.4vw,48px);border-radius:var(--r);overflow:hidden;isolation:isolate;min-height:260px}
-.nspecial .art{position:absolute;inset:0;z-index:-1;transition:transform .8s var(--ease)}
+.nspecial .art{position:absolute;inset:0;z-index:-1;transition:transform .8s var(--ease);background:radial-gradient(70% 120% at 100% 0%,rgba(141,136,242,.55),transparent 60%),radial-gradient(60% 90% at 0% 100%,rgba(13,11,58,.7),transparent 70%),linear-gradient(120deg,#2720a7,#3a2bd0 55%,#2720a7)}
 .nspecial:hover .art{transform:scale(1.04)}
 .nspecial .lbl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:var(--acc);color:#0a0a0a}
 .nspecial h3{font-size:clamp(26px,3vw,44px);line-height:1.05;font-weight:800;margin-top:22px;max-width:30ch}
 .nspecial p{color:#ddd;margin-top:14px;max-width:56ch;font-weight:500}
 @media (max-width:760px){.nspecial{grid-template-columns:1fr}}
+/* the whole card is a link: hovering it fills its button, text turns dark */
+.nav2:hover .btn::after,.nspecial:hover .btn::after{transform:none}
+.nspecial:hover .btn.ghost{color:#0a0a0a}
 
 /* ---------- quote ---------- */
 .quote{padding:var(--sec) 0}
@@ -741,6 +742,7 @@ section{position:relative}
 
 /* bracket CTA */
 .bcta{display:flex;align-items:center;justify-content:center;gap:0;padding:var(--sec) var(--pad);text-align:center;flex-direction:column}
+#gallery + #winners .bcta{padding-top:0}
 .bcta .q{font-size:clamp(20px,2.4vw,34px);font-weight:600;margin-bottom:6px}
 .bcta .q{font-size:clamp(24px,3.2vw,48px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
 .rvw{margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;border:1px solid var(--line);font-weight:600;transition:border-color .3s,color .3s}
@@ -758,9 +760,9 @@ section{position:relative}
 /* ---------- faq ---------- */
 /* ---------- organizer ---------- */
 .org{padding:var(--sec) 0}
-.ogrid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,5vw,80px);border-top:1px solid var(--line);padding-top:56px}
-.ologo{font-size:clamp(64px,9vw,150px);font-weight:900;letter-spacing:-.05em;line-height:.9;margin-top:22px}
-.ologo i{font-style:normal;color:var(--acc)}
+.org .h2{margin-bottom:40px}
+.ogrid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,5vw,80px);align-items:start;border-top:1px solid var(--line);padding-top:56px}
+.ologo{display:block;width:clamp(120px,12vw,180px);height:auto}
 .olead{font-size:clamp(20px,2vw,30px);font-weight:700;line-height:1.25}
 .ogrid p:not(.olead){color:var(--mute);margin-top:16px;max-width:620px}
 .olinks{display:flex;gap:22px;align-items:center;margin-top:28px;flex-wrap:wrap}
@@ -929,15 +931,23 @@ section{position:relative}
     <div class="head">
       <h2 class="h2 split" data-split>Номинации <em>2026</em></h2>
       <div class="howto fade">
-        <div><b>Шаг 1</b>Выберите подходящую номинацию из списка ниже</div>
+        <div class="steps"><div><b>Шаг 1</b>Выберите подходящую номинацию из списка ниже</div>
         <div><b>Шаг 2</b>Откройте ее, изучите критерии и подайте заявку <span class="ul">бесплатно<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path pathLength="1" d="M2 7C20 3 45 2 60 4s28 3 38-1"/></svg></span></div>
-        <div class="nav2"><span>Не знаете, какую номинацию выбрать? Бриф с советами жюри <b style="display:inline;color:#fff;letter-spacing:0;text-transform:none;font-size:14px">AI-Навигатор 2.0</b></span><a href="ai-navigator.html" class="btn">Читать</a></div>
+      </div>
+      <a class="rbox nav2" href="ai-navigator.html">
+        <div>
+          <div class="kicker">Бриф с советами жюри</div>
+          <h3 class="rtitle">AI-Навигатор <em>2.0</em></h3>
+          <p class="rlead">Не знаете, какую номинацию выбрать? Пошаговое руководство, как выбрать номинацию и оформить заявку.</p>
+        </div>
+        <span class="btn"><span>Читать</span></span>
+      </a>
       </div>
     </div>
     <div class="cards" id="cards"></div>
-    <a class="nspecial" href="nomination-ink.html"><div class="art" id="inkArt"></div>
+    <a class="nspecial" href="nomination-ink.html"><div class="art"></div>
       <div><span class="lbl">Спецприз</span><h3>Спецприз от медиа для предпринимателей «Инк»</h3><p>Редакция «Инк» отметит проект с осмысленным предпринимательским подходом к генеративному AI.</p></div>
-      <span class="btn ghost">Подробнее</span></a>
+      <span class="btn ghost"><span>Подробнее</span></span></a>
   </div>
 </section>
 
@@ -1044,17 +1054,17 @@ section{position:relative}
 
 <!-- ORGANIZER -->
 <section class="org" id="org">
-  <div class="wrap ogrid">
-    <div>
-      <div class="kicker">Организатор премии</div>
-      <div class="ologo">Just AI<i>.</i></div>
-    </div>
+  <div class="wrap">
+  <h2 class="h2 split" data-split>Организатор премии</h2>
+  <div class="ogrid">
+    <div><img class="ologo" src="assets/justai.svg" alt="Just AI" width="100" height="100"></div>
     <div>
       <p class="olead fade">Ведущий разработчик продуктов и решений на базе генеративного ИИ с 2011 года.</p>
       <p class="fade">Помогаем компаниям формировать стратегию работы с GenAI: проводим аудит бизнес-функций, выявляем зоны с наибольшим потенциалом, создаем дорожную карту внедрения с учетом приоритетов и зрелости организации, обучаем сотрудников и топ-менеджеров работе с AI.</p>
       <div class="olinks fade"><a class="btn ghost" href="https://just-ai.com" target="_blank" rel="noopener"><span>just-ai.com</span></a>
         <span class="hand">а еще — конференция Conversations и кейсориум Generation AI</span></div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1257,7 +1267,6 @@ $('#bento').innerHTML = `
     <div class="qdots">${REVS.map((r,i)=>`<button class="${i?'':'on'}" data-i="${i}" aria-label="Отзыв ${i+1}"></button>`).join('')}</div></div>`;
 
 $('#cards').innerHTML = NOMS.slice(0, -1).map((n,i) => `<a class="nc" href="${NOM_URL[i]}"><div class="art" style="background:${art(i)}"></div><span class="go" aria-hidden="true">↗</span><h3>${n}</h3></a>`).join('');
-$('#inkArt').style.background = art(NOMS.length - 1);
 $('#faqList').innerHTML = FAQ.map(f => `<div class="qa"><button data-cur="Ответ"><span>${f[0]}</span><span class="pm"></span></button><div class="a"><div><p>${f[1]}</p></div></div></div>`).join('');
 
 /* ---------- reveal on view ---------- */

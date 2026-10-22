@@ -39,7 +39,10 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
 - Buttons have no arrows. Carousel ←/→ controls stay.
 - Jury photos are local: `assets/jury/<surname>.webp` (4:3, colour, no grayscale). Map in `JURY_PH` (build.py) and `JURY` (index.html).
-- Index nominations: 12 cards in a 4-column grid, no numbers; the «Инк» special prize is a separate full-width plate below.
+- Index nominations: steps 1–2 stacked in one column beside the AI-Навигатор card (laid out like the review card `.rbox`, own violet fill); 12 cards in a 4-column grid, no numbers; the «Инк» special prize is a full-width plate in brand violet `#2720a7` with a gradient.
+- Button labels must sit in a `<span>` inside `.btn`, otherwise the white hover fill covers the text. On card-links (`.nav2`, `.nspecial`) hovering the card fills the button too.
+- Gallery → winners gap is a single 180px (`#gallery + #winners .bcta{padding-top:0}`).
+- Organizer block: H2 «Организатор премии», Just AI logo `assets/justai.svg`, logo and text top-aligned.
 - Index gallery: equal-height photos, natural width, endless loop (two identical sets).
 - Gallery pages show the ceremony video above the photos (`GAL_VIDEO` in build.py).
 - Header: logo image; the current page's link is lime (`aria-current`, `.dd.on` on inner pages; scroll-spy `.on` for #about/#nom on index.html).
