@@ -277,10 +277,8 @@ section{position:relative}
 [data-s-partners="pearl"] .plnote{color:#2720a7}
 [data-s-partners="pearl"] .plogos .ko{filter:none;mix-blend-mode:multiply}
 [data-s-partners="pearl"] .pl-grid{border-color:rgba(39,32,167,.12)}
-[data-s-partners="pearl"] .pl-grid div{background:rgba(255,255,255,.45);border-color:rgba(39,32,167,.12)}
-[data-s-partners="pearl"] .pl-grid small{color:#8a8a99}
-[data-s-partners="pearl"] .pl-grid div::after{border-color:#2720a7}
-[data-s-partners="pearl"] .pl-grid div:hover small{color:#2720a7}
+[data-s-partners="pearl"] .pl-grid a{background:rgba(255,255,255,.45);border-color:rgba(39,32,167,.12)}
+[data-s-partners="pearl"] .pl-grid a::after{border-color:#2720a7}
 [data-s-partners="pearl"] .oi{background:rgba(255,255,255,.7)}
 [data-s-partners="pearl"] .pl-orbit .ell{border-color:rgba(39,32,167,.25)}
 [data-s-partners="pearl"] .pl-orbit .core b{color:#2720a7}
@@ -345,13 +343,12 @@ section{position:relative}
 .ko{filter:grayscale(1) invert(1) contrast(1.9);mix-blend-mode:screen}
 /* grid — editorial table with hairlines, index in the corner */
 .pl-grid{grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.pl-grid div{position:relative;height:clamp(110px,11vw,160px);display:grid;place-items:center;background:var(--bg);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
-.pl-grid small{position:absolute;left:14px;top:12px;font:500 11px ui-monospace,Consolas,monospace;color:var(--dim);transition:color .3s}
+.pl-grid a{position:relative;height:clamp(110px,11vw,160px);display:grid;place-items:center;background:var(--bg);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
 .pl-grid img{width:100%;height:auto;transition:transform .5s var(--ease)}
-.pl-grid div::after{content:"";position:absolute;inset:10px;border:1px solid var(--acc);border-radius:10px;opacity:0;transform:scale(.94);transition:opacity .3s,transform .45s var(--ease);pointer-events:none}
-.pl-grid div:hover::after{opacity:1;transform:none}
-.pl-grid div:hover img{transform:scale(1.08)}
-.pl-grid div:hover small{color:var(--acc)}
+.pl-grid a::after{content:"";position:absolute;inset:10px;border:1px solid var(--acc);border-radius:10px;opacity:0;transform:scale(.94);transition:opacity .3s,transform .45s var(--ease);pointer-events:none}
+.pl-grid a:hover::after,.pl-grid a:focus-visible::after{opacity:1;transform:none}
+.pl-grid a:hover img{transform:scale(1.08)}
+.pl-grid a:focus-visible{outline:none}
 @media (max-width:760px){.pl-grid{grid-template-columns:1fr 1fr}}
 /* orbit — logos travel a tilted ring around the core, front ones bigger; drag to spin */
 .pl-orbit{position:relative;height:clamp(380px,40vw,560px);margin-top:20px;cursor:grab;user-select:none;touch-action:pan-y}
@@ -1304,12 +1301,15 @@ function tickMq(){
 if (!RM) requestAnimationFrame(tickMq);
 
 /* partner logos: the owner's SVGs, one 550×197 artboard each with the padding built in */
-const PLOGOS = ['inc','skolkovo','rb','spb-it-ru','ict-2-go','ict','it-world','b-o'].map(n => `assets/partners/${n}.svg`);
+const PARTNERS = [['inc','Инк','https://incrussia.ru/'],['rb','Russian Business','https://rb.ru/'],['spb-it-ru','SPB IT RU','https://spbit.ru/'],
+  ['ict-2-go','ICT2GO','https://ict2go.ru/'],['ict','ICT.Moscow','https://ict.moscow/ai/'],['it-world','IT-World','https://www.it-world.ru/'],
+  ['b-o','Б.О','https://bosfera.ru/'],['skolkovo','Сколково','https://sk.ru/']];
+const PLOGOS = PARTNERS.map(([n]) => `assets/partners/${n}.svg`);
 $('#plgrid').innerHTML = PLOGOS.map((l,i) => `<img src="${l}" alt="" loading="lazy"><svg class="xs"><use href="#x${i%2+1}"/></svg>`).join('').repeat(2);
 
 /* media partners: grid / orbit / flow */
 const ko = l => `<img class="ko" src="${l}" alt="" loading="lazy">`;
-$('#plGrid').innerHTML = PLOGOS.map((l,i) => `<div><small>${pad2(i)}</small>${ko(l)}</div>`).join('');
+$('#plGrid').innerHTML = PARTNERS.map(([n, name, url], i) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${name}">${ko(PLOGOS[i])}</a>`).join('');
 $('#plRing').innerHTML = PLOGOS.map(l => `<span class="oi">${ko(l)}</span>`).join('');
 $('#plN').textContent = PLOGOS.length;
 $('#plFlowA').innerHTML = PLOGOS.map(ko).join('').repeat(2);
