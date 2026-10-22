@@ -58,7 +58,8 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 
 ## Open items
 
-- Winner logos missing on «Лауреаты 2025» (show company name instead): target ai, СберЗдоровье, ITQuick. 2026 is complete; Botamin's file is tiny (82×29), a larger one would look better.
+- Winner logo missing on «Лауреаты 2025»: СберЗдоровье (shows its name instead). Botamin's 2026 file is tiny (82×29), a larger one would look better.
+- Never name a file starting with a dot: GitHub Pages does not serve dotfiles.
 - Owner plans a redesign later and plans to host on GitHub Pages (public repo, root folder).
 
 ## Working with the owner
