@@ -196,9 +196,15 @@ def render_md(text):
     lead_html = markdown.markdown(lead)[3:-4] if lead else ''
     return h1, lead_html, meta, body, cover
 
-def article(fname, src, title, desc, crumb, active='', h1cls=''):
+def article(fname, src, title, desc, crumb, active='', h1cls='', side_toc=False):
     h1, lead, meta, body, cover = render_md((DATA / src).read_text(encoding='utf-8'))
     lead_block = f'<p class="lead">{lead}</p>' if lead else ''
+    if side_toc:   # two columns: the article on the left, its table of contents in a sticky column on the right
+        m = re.search(r'<nav class="toc".*?</nav>', body, re.S)
+        toc = m[0] if m else ''; body = body.replace(toc, '')
+        b = f'''<section class="phead has-cover"><div class="wrap"><div class="ph-grid"><div>{crumbs((crumb, None))}<h1 class="{h1cls}">{esc(h1)}</h1>{lead_block}{meta}</div><img class="cover" src="{esc(cover)}" alt=""></div></div></section>
+<main><div class="wrap art-grid"><article class="prose">{body}</article><aside class="art-side">{toc}</aside></div></main>'''
+        return page(fname, title, desc, b, active)
     if cover:
         b = f'''<section class="phead has-cover"><div class="wrap"><div class="ph-grid"><div>{crumbs((crumb, None))}<h1 class="{h1cls}">{esc(h1)}</h1>{lead_block}{meta}</div><img class="cover" src="{esc(cover)}" alt=""></div></div></section>
 <main><div class="wrap narrow wide-ok"><article class="prose">{body}</article></div></main>'''
@@ -323,7 +329,7 @@ if __name__ == '__main__':
     made.append(article('analytical-review.html', 'analytical_review.md',
                         'От чат-бота к агенту: как генеративный AI изменил рынок в 2026 | Generation AI Awards',
                         'Аналитика по 200+ проектам премии: тренды по отраслям, живые кейсы с цифрами и главный вывод — бизнес научился применять AI избирательно.',
-                        'Аналитический обзор', 'rev'))
+                        'Аналитический обзор', 'rev', side_toc=True))
     made.append(article('protocol.html', 'protocol.md', 'Положение о премии Generation AI Awards',
                         'Правила участия, номинации и критерии оценки премии Generation AI Awards', 'Положение премии', h1cls='long'))
     for n in NOMS:

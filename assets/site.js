@@ -19,6 +19,15 @@
     t.parentNode.insertBefore(w, t); w.appendChild(t);
   });
 
+  /* side contents: the link of the section you are reading turns lime */
+  const side = $('.art-side');
+  if (side) {
+    const links = $$('a[href^="#"]', side), heads = links.map(a => document.getElementById(decodeURIComponent(a.hash.slice(1)))).filter(Boolean);
+    const spy = () => { let cur = heads[0]; heads.forEach(h => { if (h.getBoundingClientRect().top < innerHeight * .3) cur = h; });
+      links.forEach(a => a.classList.toggle('on', decodeURIComponent(a.hash.slice(1)) === cur.id)); };
+    addEventListener('scroll', spy, {passive: true}); spy();
+  }
+
   /* gallery lightbox */
   const lb = $('#lb');
   if (lb) {
