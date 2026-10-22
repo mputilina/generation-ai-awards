@@ -833,22 +833,35 @@ section{position:relative}
 @media (min-width:601px){.hdr .btn .short{display:none}}
 
 /* ---------- first screen: surreal garden, centred composition ---------- */
-[data-hero="garden"] .hero{justify-content:flex-start;padding-top:clamp(96px,13vh,130px)}
-[data-hero="garden"] .hero .fadeb{height:14%}
-[data-hero="garden"] .hero > .wrap{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
-[data-hero="garden"][data-start="poster"] .hero .st-poster{display:inline-flex!important;position:static;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(10,8,40,.35);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-bottom:clamp(18px,3vh,30px);text-align:left}
-[data-hero="garden"] .hero .st-poster b,[data-hero="garden"] .hero .st-poster .pl{display:inline;font-size:14px}
-[data-hero="garden"] .hero .st-poster b{color:var(--acc)}
-[data-hero="garden"] .hero h1{font-size:clamp(46px,9vw,148px);text-shadow:0 10px 60px rgba(10,8,40,.45)}
-[data-hero="garden"] .hero h1 .l1{font-size:.4em}
-[data-hero="garden"] .hero .sub{justify-content:center;margin-top:clamp(16px,2.6vh,26px)}
-[data-hero="garden"] .hero .sub p{max-width:520px}
+:is([data-hero="garden"],[data-hero="photo"]) .hero{justify-content:flex-start;padding-top:clamp(96px,13vh,130px)}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .fadeb{height:14%}
+:is([data-hero="garden"],[data-hero="photo"]) .hero > .wrap{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+:is([data-hero="garden"],[data-hero="photo"])[data-start="poster"] .hero .st-poster{display:inline-flex!important;position:static;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(10,8,40,.35);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-bottom:clamp(18px,3vh,30px);text-align:left}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .st-poster b,:is([data-hero="garden"],[data-hero="photo"]) .hero .st-poster .pl{display:inline;font-size:14px}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .st-poster b{color:var(--acc)}
+:is([data-hero="garden"],[data-hero="photo"]) .hero h1{font-size:clamp(46px,9vw,148px);text-shadow:0 10px 60px rgba(10,8,40,.45)}
+:is([data-hero="garden"],[data-hero="photo"]) .hero h1 .l1{font-size:.4em}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .sub{justify-content:center;margin-top:clamp(16px,2.6vh,26px)}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .sub p{max-width:520px}
 [data-hero="garden"] .hcta{order:3;padding:clamp(20px,3.4vh,34px) 0 0;justify-content:center}
 /* the numbers on frosted plates at the bottom */
-[data-hero="garden"] .hero .stats{order:4;margin:auto 0 clamp(20px,4vh,40px);padding:0;border:0;gap:12px;justify-content:center;flex-wrap:wrap}
-[data-hero="garden"] .hero .stat{min-width:clamp(150px,15vw,210px);padding:16px 24px;border-radius:20px;background:rgba(14,12,48,.32);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);text-align:center}
-[data-hero="garden"] .hero .stat b{font-size:clamp(30px,3.4vw,48px)}
-@media (max-width:600px){[data-hero="garden"] .hero .stats{flex-wrap:nowrap;gap:8px;width:100%}[data-hero="garden"] .hero .stat{min-width:0;flex:1;padding:12px 6px;border-radius:16px}[data-hero="garden"] .hero .stat span{font-size:10px;letter-spacing:.04em}[data-hero="garden"] .hero .st-poster b,[data-hero="garden"] .hero .st-poster .pl{font-size:13px}}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .stats{order:4;margin:auto 0 clamp(20px,4vh,40px);padding:0;border:0;gap:12px;justify-content:center;flex-wrap:wrap}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .stat{min-width:clamp(150px,15vw,210px);padding:16px 24px;border-radius:20px;background:rgba(14,12,48,.32);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);text-align:center}
+:is([data-hero="garden"],[data-hero="photo"]) .hero .stat b{font-size:clamp(30px,3.4vw,48px)}
+@media (max-width:600px){:is([data-hero="garden"],[data-hero="photo"]) .hero .stats{flex-wrap:nowrap;gap:8px;width:100%}:is([data-hero="garden"],[data-hero="photo"]) .hero .stat{min-width:0;flex:1;padding:12px 6px;border-radius:16px}:is([data-hero="garden"],[data-hero="photo"]) .hero .stat span{font-size:10px;letter-spacing:.04em}:is([data-hero="garden"],[data-hero="photo"]) .hero .st-poster b,:is([data-hero="garden"],[data-hero="photo"]) .hero .st-poster .pl{font-size:13px}}
+
+/* photo first screen: the owner's night-hills image with a light parallax; one-size title, no number plates */
+.hbg{display:none;position:absolute;inset:-8% -4% -4%;z-index:-2;background:url("images/hero.webp") 50% 70%/cover no-repeat;will-change:transform}
+.hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 35%,rgba(10,10,10,0) 60%,var(--bg) 100%)}
+[data-hero="photo"] .hbg{display:block}
+[data-hero="photo"] .hero canvas{display:none}
+[data-hero="photo"] .hero h1{font-size:clamp(40px,7.4vw,118px);line-height:.9}
+[data-hero="photo"] .hero h1 .l1{font-size:1em;letter-spacing:-.035em}
+[data-hero="photo"] .hero .sub p{text-transform:none;font-weight:500;font-size:clamp(17px,1.6vw,22px);letter-spacing:0}
+[data-hero="photo"] .hero .stats{display:none}
+[data-hero="photo"] .hero .hcta{margin-top:clamp(28px,4vh,40px);padding-top:0}
+@media (max-width:600px){[data-hero="photo"] .hero .hcta{align-self:stretch}}
+[data-hero="photo"] .hero > .wrap{justify-content:center;padding-bottom:12vh}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
@@ -856,7 +869,7 @@ section{position:relative}
 }
 </style>
 </head>
-<body data-hero="garden" data-nom="cards" data-accent="lime" data-head="press" data-ben="bento" data-pl="grid" data-start="poster" data-stc="coral" data-style="spb" data-order="story" data-lsw="on" data-s-ticker="spb" data-s-hero="base" data-s-ben="base" data-s-jury="base" data-qbg="pearl" data-s-quote="spb" data-s-logos="pearl" data-s-nom="base" data-s-tl="pearl" data-s-gallery="base" data-s-winners="base" data-s-partners="pearl" data-s-faq="base" data-s-org="pearl" data-s-footer="base" data-circ="lime" data-qr="lime" data-clean="on" data-pearl="mesh">
+<body data-hero="photo" data-nom="cards" data-accent="lime" data-head="press" data-ben="bento" data-pl="grid" data-start="poster" data-stc="coral" data-style="spb" data-order="story" data-lsw="on" data-s-ticker="spb" data-s-hero="base" data-s-ben="base" data-s-jury="base" data-qbg="pearl" data-s-quote="spb" data-s-logos="pearl" data-s-nom="base" data-s-tl="pearl" data-s-gallery="base" data-s-winners="base" data-s-partners="pearl" data-s-faq="base" data-s-org="pearl" data-s-footer="base" data-circ="lime" data-qr="lime" data-clean="on" data-pearl="mesh">
 
 
 <!-- hand-drawn cross, reused -->
@@ -887,6 +900,7 @@ section{position:relative}
 <!-- HERO -->
 <section class="hero" id="top">
   <canvas id="heroCv"></canvas>
+  <div class="hbg" id="hbg" aria-hidden="true"></div>
   <video class="hv" id="heroVid" src="https://just-ai.com/video/GEN_AI_AWARDS_26_1.mp4" muted loop playsinline preload="none"></video><div class="hvveil"></div>
   <div class="grain"></div>
   <div class="fadeb"></div>
@@ -900,7 +914,7 @@ section{position:relative}
     <div class="st-poster fade"><b>2 декабря</b><span class="pl">старт приема заявок</span></div>
     <h1 class="split" data-split><span class="l1">Generation AI</span><span class="l2">Awards</span></h1>
     <div class="sub">
-      <p class="fade">Первая премия по применению <span class="circ">GenAI<svg viewBox="0 0 120 60" preserveAspectRatio="none"><path pathLength="1" d="M70 6C40 2 6 12 5 32c-1 19 40 25 70 22 30-3 44-15 39-30C109 9 80 3 52 7"/></svg></span> бизнесом</p>
+      <p class="fade">Первая премия по применению GenAI бизнесом</p>
     </div>
     <div class="stats fade">
       <div class="stat"><b data-count="10">0</b><span>номинаций</span></div>
@@ -1335,6 +1349,18 @@ const cio = new IntersectionObserver(es => es.forEach(e => {
   requestAnimationFrame(step);
 }), {threshold:.5});
 $$('[data-count]').forEach(el => cio.observe(el));
+
+/* ---------- first screen photo: light parallax on scroll and pointer ---------- */
+const hbg = $('#hbg'), hero = $('.hero'); let pmx = 0, pmy = 0, ptx = 0, pty = 0;
+hero.addEventListener('pointermove', e => { ptx = e.clientX / innerWidth - .5; pty = e.clientY / innerHeight - .5; });
+hero.addEventListener('pointerleave', () => { ptx = pty = 0; });
+(function px(){
+  if (document.body.dataset.hero === 'photo' && scrollY < innerHeight * 1.2){
+    pmx += (ptx - pmx) * .06; pmy += (pty - pmy) * .06;
+    hbg.style.transform = RM ? '' : `translate3d(${-pmx * 18}px,${scrollY * .28 - pmy * 10}px,0) scale(1.02)`;
+  }
+  requestAnimationFrame(px);
+})();
 
 /* ---------- mobile menu: burger, second level opens on tap ---------- */
 const burger = $('.burger');
