@@ -40,3 +40,4 @@ AppSec Solutions | images/cases/appsec.webp
 Selectel | images/cases/selectel.webp
 Альфа-Капитал | images/cases/alfacapital.webp
 Совкомбанк | images/cases/sovkombank.webp
+МТС | images/cases/visionlabs.webp
