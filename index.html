@@ -272,7 +272,7 @@ section{position:relative}
 .tmq span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:600}
 @keyframes tm{to{transform:translateX(-50%)}}
 .t6{grid-column:span 2}
-.t6 q{font-size:clamp(16px,1.4vw,20px);font-weight:600;line-height:1.35;margin-top:14px;quotes:"«" "»"}
+.t6 q{font-size:clamp(16px,1.4vw,20px);font-weight:600;line-height:1.35;margin-top:14px;quotes:"«" "»";font-style:italic}
 .t6 .who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px;font-size:14px;color:var(--mute)}
 .t6 .who img{height:34px;background:#fff;border-radius:8px;padding:4px 8px}
 .bt .go{position:absolute;right:18px;top:18px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:transform .4s var(--ease),background .3s}
@@ -564,7 +564,7 @@ section{position:relative}
 [data-clean="on"] .rbox .kicker{text-transform:none;letter-spacing:0;font-size:13px}
 [data-clean="on"] .bhint,[data-clean="on"] .bcta .q .dd{display:none}
 /* the friendly handwritten notes stay as they are (handwriting kept on purpose) */
-[data-clean="on"] .quote blockquote .lead{font-family:inherit!important;font-style:normal!important;font-weight:700!important;font-size:1.25em!important}
+[data-clean="on"] .quote blockquote .lead{font-family:inherit!important;font-style:italic!important;font-weight:700!important;font-size:1.25em!important}
 [data-clean="on"] .split:not(h1) .c{font-weight:inherit!important;transition:color .25s}
 
 /* pearl backdrops in the spirit of the nomination highlights: one peach-to-blue transition everywhere */
@@ -701,7 +701,7 @@ section{position:relative}
 [data-qr="line"] .quote .rbox .rtitle{font-size:clamp(34px,3.8vw,58px)}
 @media (max-width:900px){[data-qr="line"] .qmain{border-right:0;border-bottom:1px solid var(--line);padding:0 0 30px}[data-qr="line"] .quote .rbox{padding:30px 0 0}[data-qr="photo"] .qmain{padding-right:clamp(24px,3vw,44px);background-size:auto 60%}}
 @media (max-width:900px){.qgrid,[data-qr] .qgrid{grid-template-columns:1fr}}   /* quote and review card one under the other */
-.quote blockquote{font-size:clamp(19px,1.9vw,28px);line-height:1.35;font-weight:600;letter-spacing:-.005em;max-width:900px}
+.quote blockquote{font-size:clamp(19px,1.9vw,28px);line-height:1.35;font-weight:600;letter-spacing:-.005em;max-width:900px;font-style:italic}   /* quotes are italic */
 .quote blockquote .qw{opacity:.14;transition:opacity .25s}
 .quote blockquote .qw.lit{opacity:1}
 .quote blockquote .lead{color:var(--acc)}

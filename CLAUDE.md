@@ -37,6 +37,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 
 - Design: dark background, lime accent `#c6f766`, violet `#2720a7`, Montserrat. All H2 are 40px max (`clamp(28px,3.2vw,40px)`).
 - Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
+- All quotes are italic (main-page chair quote and participant reviews, `.prose blockquote`, advice cards); signatures (name, role) stay upright.
 - Buttons have no arrows. Carousel ←/→ controls stay.
 - Jury photos are local: `assets/jury/<surname>.webp` (4:3, colour, no grayscale). Map in `JURY_PH` (build.py) and `JURY` (index.html).
 - Index nominations: steps 1–2 stacked in one column beside the AI-Навигатор card, both columns equal width (laid out like the review card `.rbox`, own violet fill); 12 cards in a 4-column grid, no numbers (phones: one per row, 2:1 instead of square); the «Инк» special prize is a full-width plate in brand violet `#2720a7` with a gradient.
