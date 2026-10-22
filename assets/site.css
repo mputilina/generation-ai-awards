@@ -257,6 +257,8 @@ main{padding-bottom:var(--sec)}
   .cta{padding:22px}
 }
 @media (min-width:601px){.hdr .btn .short{display:none}}
+/* phones: every button spans the width, label centred */
+@media (max-width:600px){.btn{width:100%;justify-content:center;text-align:center;white-space:normal}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 
 /* ---------- page head with cover image (navigator, review) ---------- */

@@ -40,7 +40,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Buttons have no arrows. Carousel ←/→ controls stay.
 - Jury photos are local: `assets/jury/<surname>.webp` (4:3, colour, no grayscale). Map in `JURY_PH` (build.py) and `JURY` (index.html).
 - Index nominations: steps 1–2 stacked in one column beside the AI-Навигатор card, both columns equal width (laid out like the review card `.rbox`, own violet fill); 12 cards in a 4-column grid, no numbers (phones: one per row, 2:1 instead of square); the «Инк» special prize is a full-width plate in brand violet `#2720a7` with a gradient.
-- Buttons are never underlined (`.prose a.btn{text-decoration:none}`).
+- Buttons are never underlined (`.prose a.btn{text-decoration:none}`). On phones (≤600px) every button spans the width with the label centred (index.html and site.css); the main-page jury «Все члены жюри» drops below the ←/→ arrows.
 - Button labels must sit in a `<span>` inside `.btn`, otherwise the white hover fill covers the text. On card-links (`.nav2`, `.nspecial`) hovering the card fills the button too.
 - Gallery → winners gap is a single 180px (`#gallery + #winners .bcta{padding-top:0}`).
 - Organizer block: H2 «Организатор премии», horizontal Just AI logo `assets/justai.svg` centred on a plate styled like the partner/participant cells (`.oplate`), plate and text top-aligned.
