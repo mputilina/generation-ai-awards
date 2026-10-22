@@ -638,7 +638,7 @@ section{position:relative}
 .cards{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;perspective:1200px}
 @media (max-width:1100px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:500px){.cards{grid-template-columns:1fr}}
+@media (max-width:500px){.cards{grid-template-columns:1fr}.cards .nc{aspect-ratio:2/1}}   /* phones: one card per row, half as tall */
 [data-nom="cards"] .spines{display:none}
 [data-nom="cards"] .cards{display:grid}
 .nc{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;padding:22px;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .5s var(--ease);cursor:pointer;isolation:isolate;background:var(--bg3)}
@@ -700,7 +700,7 @@ section{position:relative}
 [data-qr="line"] .quote .rbox:hover{transform:none}
 [data-qr="line"] .quote .rbox .rtitle{font-size:clamp(34px,3.8vw,58px)}
 @media (max-width:900px){[data-qr="line"] .qmain{border-right:0;border-bottom:1px solid var(--line);padding:0 0 30px}[data-qr="line"] .quote .rbox{padding:30px 0 0}[data-qr="photo"] .qmain{padding-right:clamp(24px,3vw,44px);background-size:auto 60%}}
-@media (max-width:900px){.qgrid{grid-template-columns:1fr}}
+@media (max-width:900px){.qgrid,[data-qr] .qgrid{grid-template-columns:1fr}}   /* quote and review card one under the other */
 .quote blockquote{font-size:clamp(19px,1.9vw,28px);line-height:1.35;font-weight:600;letter-spacing:-.005em;max-width:900px}
 .quote blockquote .qw{opacity:.14;transition:opacity .25s}
 .quote blockquote .qw.lit{opacity:1}

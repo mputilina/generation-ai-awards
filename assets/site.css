@@ -248,7 +248,7 @@ main{padding-bottom:var(--sec)}
   .crit-foot{grid-template-columns:1fr}
   .apply{position:static}
 }
-@media (max-width:600px){.cgrid,.nom-ink .blk-qa{grid-template-columns:1fr}}
+@media (max-width:600px){.cgrid{grid-template-columns:1fr}}
 @media (max-width:760px){:root{--sec:110px}.jgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 14px}}
 @media (max-width:600px){
   .hdr .btn .long{display:none}
@@ -395,5 +395,6 @@ main{padding-bottom:var(--sec)}
   .blk-test .card{grid-template-columns:40px minmax(0,1fr);gap:8px 18px;align-items:start}
   .blk-test .card h3{font-size:32px;grid-row:span 2}
   .winner{grid-template-columns:1fr}
+  .nom-ink .blk-qa{grid-template-columns:1fr}   /* after the 1000px rule so it wins on phones */
   .wlogo{height:80px;max-width:200px}
 }
