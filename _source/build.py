@@ -133,7 +133,13 @@ def block_item(kind, body, mod):
         top = f'<div class="who"><img class="av" src="{esc(src)}" alt="{esc(name)}" loading="lazy"><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
     inner = md_inline('\n'.join(lines))
     if kind == 'advice': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
-    if kind == 'prize': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
+    if kind == 'split':   # two cards side by side; a !figure line splits a card into its text and a photo + quote below
+        txt = '\n'.join(lines); fig = re.search(r'^!figure (.+?) \| (.+)$', txt, re.M)
+        if fig:
+            head, quote = txt[:fig.start()], txt[fig.end():]
+            inner = (md_inline(head) + f'<div class="pq"><img class="fig" src="{esc(fig[1])}" alt="{esc(fig[2])}" loading="lazy">'
+                     f'<div class="txt">{md_inline(quote)}</div></div>')
+        return f'<div class="card{" " + mod if mod else ""}">{inner}</div>'
     if kind == 'quote': return f'<figure class="card"><blockquote>{inner}</blockquote><figcaption>{top}</figcaption></figure>'
     tag = {'dodont': ('Не стоит' if mod == 'dont' else 'Приветствуется')}.get(kind, '')
     badge = f'<span class="badge">{tag}</span>' if tag else ''
