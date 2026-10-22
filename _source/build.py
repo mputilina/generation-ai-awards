@@ -85,28 +85,19 @@ def page(fname, title, desc, body, active='', body_cls=''):
     return fname
 
 # ---------- markdown with a few site-specific blocks ----------
-LOGO = {}   # company name -> logo URL, collected from the winners lists
 def logo_url(x): return x   # local path (images/logos/*.webp) or a full URL
-def load_logos():
-    for f in ['shortlist_2026.txt', 'shortlist_2025.txt']:
-        for ln in (DATA / f).read_text(encoding='utf-8').split('\n'):
-            if ln.startswith(('W: ', 'F: ')):
-                lg, c = [x.strip() for x in ln[3:].split('|')][:2]
-                if lg != '-': LOGO.setdefault(c, logo_url(lg))
-    for c, a in {'Сбер': 'Сбер', 'ИТ Икс 5 Технологии': 'ИТ Икс 5 Технологии', 'Билайн': 'Вымпелком', 'МТС': None,
-                 'Совкомбанк Страхование': 'Совкомбанк', 'ГК «Солар»': 'ГК Солар', 'Северсталь': 'Северсталь'}.items():
-        if a and a in LOGO: LOGO.setdefault(c, LOGO[a])
-    LOGO.setdefault('ВТБ', 'images/logos/vtb.webp')
-    LOGO.setdefault('ВкусВилл', 'images/logos/vkusvill.webp')
-    LOGO.setdefault('Московская Биржа', 'images/logos/moex.webp')
-    LOGO.setdefault('Колесо.ру', 'images/logos/koleso.webp')
-load_logos()
+
+# case-card logos (only «От чат-бота к агенту» has case cards): round images listed in data/case_logos.txt
+CASE_LOGO = dict([x.strip() for x in ln.split('|')] for ln in (DATA / 'case_logos.txt').read_text(encoding='utf-8').split('\n')
+                 if ln.strip() and not ln.startswith('#'))
 
 def case_html(line):
     co, kind, task, sol, res, nom = [x.strip() for x in line[2:].split('|')]
     win = ' win' if 'победитель' in nom else ''
-    lg = LOGO.get(co)
-    lgh = f'<div class="clogo"><img src="{lg}" alt="{esc(co)}" loading="lazy"></div>' if lg else ''
+    lg = CASE_LOGO.get(co)
+    initials = ''.join(w[0] for w in re.findall(r'[\wА-Яа-яЁё]+', co)[:2]).upper()
+    lgh = (f'<img class="clogo" src="{lg}" alt="{esc(co)}" loading="lazy">' if lg
+           else f'<span class="clogo none" aria-hidden="true">{esc(initials)}</span>')   # same circle when no logo yet
     return (f'<article class="case">{lgh}<h4>{esc(co)}</h4><p class="kind">{esc(kind)}</p><dl>'
             f'<dt>Задача</dt><dd>{esc(task)}</dd><dt>Решение</dt><dd>{esc(sol)}</dd>'
             f'<dt>Результат</dt><dd>{esc(res)}</dd></dl><p class="nom{win}">{esc(nom)}</p></article>')

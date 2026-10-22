@@ -1,0 +1,42 @@
+# Case-card logos on «От чат-бота к агенту»: Company | image. Round 144×144 images in images/cases/.
+# A company missing here gets a round placeholder with its initials.
+Сбер | images/cases/sber.webp
+Совкомбанк Страхование | images/cases/scb-insurance.webp
+ВТБ | images/cases/vtb.webp
+Авито | images/cases/avito.webp
+ИТ Икс 5 Технологии | images/cases/x5.webp
+ВкусВилл | images/cases/vkusvil.webp
+Циан | images/cases/cian.webp
+Domamo | images/cases/domamo.webp
+А101 | images/cases/a101.webp
+Северсталь | images/cases/severstal.webp
+Ланит-Терком | images/cases/lanit-tercom.webp
+Билайн | images/cases/beeline.webp
+РПГУ Московской области | images/cases/msc-gosuslugi.webp
+Транспортный комплекс Москвы | images/cases/msc-transport.webp
+Европейская медиагруппа | images/cases/emg.webp
+Skyeng | images/cases/skyeng.webp
+RT (АНО «ТВ-Новости») | images/cases/rt.webp
+Колесо.ру | images/cases/kolesoru.webp
+Т-Банк | images/cases/tbank.webp
+Росконгресс | images/cases/roscongress.webp
+Северсталь + Xenia AI | images/cases/xeniaai.webp
+ЛАНИТ | images/cases/lanit.webp
+VOXYS | images/cases/voxys.webp
+Альфа-Банк | images/cases/alfa.webp
+ГК «Солар» | images/cases/solar.webp
+ecom.tech | images/cases/ecom.webp
+Botamin | images/cases/botamin.webp
+AICAP | images/cases/aicap.webp
+Азнагулов Консалтинг | images/cases/aznagulov.webp
+Московская Биржа | images/cases/moex.webp
+НПФ «Будущее» | images/cases/npf-budushee.webp
+Т1 ИИ для ВЭБ.РФ | images/cases/t1.webp
+Карелиа Берриз | images/cases/karelia-berries.webp
+НейроДВС | images/cases/neirodvc.webp
+Гемотэк | images/cases/hemotech.webp
+ax group | images/cases/ax-group.webp
+AppSec Solutions | images/cases/appsec.webp
+Selectel | images/cases/selectel.webp
+Альфа-Капитал | images/cases/alfacapital.webp
+Совкомбанк | images/cases/sovkombank.webp

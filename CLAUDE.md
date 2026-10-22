@@ -29,7 +29,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - `ai_navigator.md`, `analytical_review.md`, `protocol.md`, `ink.md`, `choice.md` — Markdown plus site blocks:
   - `:::kind` … `+++` (next card, optional modifier e.g. `+++ dont`) … `:::` → card grid. Kinds: intro, qa, callouts, steps, versus, dodont, experts, icons, template, quote, test, trends, duo, prize (large photo + quote), highlight (bright lime plate around a whole section, its `## heading` inside) — styled in site.css as `.blk-<kind>`.
   - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`, `!figure URL | alt` (large image, used by `prize`).
-  - `C: Company | type | task | solution | result | nomination` → case card (logo looked up by company name, `LOGO` in build.py).
+  - `C: Company | type | task | solution | result | nomination` → case card (only in `analytical_review.md`). Its logo comes from `case_logos.txt` (`Company | images/cases/*.webp`, round 144×144 images shown as 64px circles); a company without one gets a same-size circle with its initials (МТС for now).
   - `[[CTA text | button | href]]`, `[[META a | b]]`, `[[COVER url]]`, `[[TOC]]`.
 - `gal2026.txt`, `gallery_2025.txt` — gallery photo paths, one per line, local WebP files in `images/gallery-<year>/` (2026 page also shows `statuettes-2026.jpg` first).
 

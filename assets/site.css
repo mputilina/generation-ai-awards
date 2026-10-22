@@ -316,8 +316,9 @@ main{padding-bottom:var(--sec)}
 .blk-trends .card{counter-increment:tr}
 .blk-trends .card h3::before{content:counter(tr,decimal-leading-zero);display:block;font-size:44px;font-weight:900;color:var(--acc);letter-spacing:-.03em;margin-bottom:10px}
 .blk-duo .card h3{font-size:44px;font-weight:900;color:var(--acc);letter-spacing:-.03em}
-.case .clogo{height:52px;width:fit-content;min-width:90px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;background:#fff;border-radius:12px;padding:6px 12px}
-.case .clogo img{max-height:40px;max-width:140px;object-fit:contain}
+/* case logos: one size, round */
+.case .clogo{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;margin-bottom:4px;background:#fff}
+.case .clogo.none{display:grid;place-items:center;font-weight:800;font-size:20px;color:#0a0a0a}
 
 /* ---------- winners with logos ---------- */
 .winner{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:center}
