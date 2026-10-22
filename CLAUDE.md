@@ -53,7 +53,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - External on purpose: Кейсориум (generation-ai.ru), the "Что думают члены жюри…" article, privacy policy PDF, Telegram links.
 - Partner logos on index.html are local SVGs in `assets/partners/`, listed with their links in `PARTNERS` (order, name, URL); each cell is a link opening in a new tab, no numbers.
 - Participant logos on index.html are local SVGs in `assets/participants/`, listed in `LOGOS` (file, name); same hairline table as the partners, 6 per row (4 under 900px, 2 under 480px); empty `.fill` cells close the last row of six.
-- Other images (winner logos, the main page's ceremony strip and benefit photos) hotlink tildacdn.com.
+- Goal: no Tilda dependency. Main page photos (`GAL`, video poster, quote photo) are local. Still on tildacdn.com: 3 review logos on index.html (`REVS`), winner/finalist logos (`shortlist_*.txt`, `LOGO` in build.py), images in `ai_navigator.md` / `analytical_review.md`. This sandbox's network policy blocks tildacdn.com, so they can't be downloaded until the owner allows it.
 
 ## Open items
 

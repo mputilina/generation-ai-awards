@@ -664,7 +664,7 @@ section{position:relative}
 [data-qr="lime"] .quote .who span{font-size:12px}
 /* look C — chair's portrait carries the quote, review card beside */
 [data-qr="photo"] .qmain{position:relative;border-radius:24px;overflow:hidden;padding:clamp(24px,3vw,44px);padding-right:48%;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;background:#131313}
-[data-qr="photo"] .qmain::before{content:"";position:absolute;right:0;top:0;bottom:0;width:50%;background:url("https://static.tildacdn.com/tild6261-3362-4638-b332-343431303232/photo.png") 60% 15%/cover no-repeat;-webkit-mask:linear-gradient(90deg,transparent,#000 40%);mask:linear-gradient(90deg,transparent,#000 40%)}
+[data-qr="photo"] .qmain::before{content:"";position:absolute;right:0;top:0;bottom:0;width:50%;background:url("assets/jury/pivovarova.webp") 60% 15%/cover no-repeat;-webkit-mask:linear-gradient(90deg,transparent,#000 40%);mask:linear-gradient(90deg,transparent,#000 40%)}
 [data-qr="photo"] .qmain > *{position:relative;z-index:1}
 [data-qr="photo"] .quote .who img{display:none}
 [data-qr="photo"] .quote blockquote{font-size:clamp(17px,1.5vw,22px)}
@@ -962,7 +962,7 @@ section{position:relative}
     <div class="mark">“</div>
     <blockquote id="qt"><span class="lead">Generation AI Awards — это не просто премия.</span> Это зеркало зрелости российского рынка генеративных технологий. В 2025 году мы увидели проекты, где участники больше экспериментировали с генеративным ИИ, а сегодня ждем тех, кто перешел от пилотов к устойчивым бизнес-моделям. Подавая заявку, вы не просто участвуете в конкурсе — ваш успешный опыт может стать точкой роста для всего рынка.</blockquote>
     <div class="who fade">
-      <img src="https://static.tildacdn.com/tild6261-3362-4638-b332-343431303232/photo.png" alt="">
+      <img src="assets/jury/pivovarova.webp" alt="">
       <div><b>Юлия Пивоварова</b><span>Председатель жюри сезона ’26</span></div>
     </div>
     </div>
@@ -994,7 +994,7 @@ section{position:relative}
   <div class="vs">
     <div class="vw" id="vw1">Как это</div>
     <div class="vframe" id="vframe" data-cur="Со звуком">
-      <video id="vvid" src="https://just-ai.com/video/GEN_AI_AWARDS_26_1.mp4" poster="https://static.tildacdn.com/tild3732-3135-4136-b834-336234636637/0625_genAi-0353.jpg" muted loop playsinline preload="metadata"></video>
+      <video id="vvid" src="https://just-ai.com/video/GEN_AI_AWARDS_26_1.mp4" poster="images/gallery-2026/0353.webp" muted loop playsinline preload="metadata"></video>
       <span class="vload" id="vload"><i></i>Видео загружается</span>
       <span class="snd" id="snd"><i></i><span id="sndT">Нажмите, чтобы включить звук</span></span>
     </div>
@@ -1126,7 +1126,7 @@ const T = 'https://static.tildacdn.com/';
 /* participant logos: the owner's SVGs, cropped tight to the mark */
 const LOGOS = [['t-bank','Т-Банк'],['avito','Авито'],['alfa-bank','Альфа-Банк'],['sovcombank','Совкомбанк'],['sber','Сбер'],['skolkovo','Сколково'],['skyeng','Skyeng'],['vkusvill','ВкусВилл'],
   ['itmo','ИТМО'],['x5-tech','X5 Tech'],['beeline','Билайн'],['moex','Московская Биржа'],['cian','Циан'],['vtb','ВТБ'],['koleso','Колесо.ру'],['severstal','Северсталь']];
-const GAL = ['tild6462-3064-4032-b662-383966306635/0625_genAi-0521.jpg','tild3732-3135-4136-b834-336234636637/0625_genAi-0353.jpg','tild3763-3532-4561-b338-643063656137/0625_genAi-0316.jpg','tild6666-3765-4238-b865-663232643664/0625_genAi-0657.jpg','tild3136-3431-4434-b862-326363333964/0625_genAi-0159.jpg','tild3430-6638-4364-b066-376330653963/0625_genAi-0080.jpg','tild3235-6561-4136-b634-336433613961/0625_genAi-0198.jpg','tild6239-6266-4161-b732-363739353733/0625_genAi-0605.jpg','tild6134-3930-4637-b466-336166363461/0625_genAi-0558.jpg','tild6533-6163-4264-b362-373832633435/0625_genAi-0503.jpg','tild3837-6262-4430-a537-366137316338/0625_genAi-0576.jpg'];
+const GAL = ['images/gallery-2026/0521.webp','images/gallery-2026/0353.webp','images/gallery-2026/0316.webp','images/gallery-2026/0657.webp','images/gallery-2026/0159.webp','images/gallery-2026/0080.webp','images/gallery-2026/0198.webp','images/gallery-2026/0605.webp','images/gallery-2026/0558.webp','images/gallery-2026/0503.webp','images/gallery-2026/0576.webp'];
 const STAGES = [
   ['05.12 — 27.04','Прием заявок','Прием заявок и регистрация участников, чьи заявки соответствуют требованиям Положения.','01'],
   ['28.04 — 15.05','Проверка','Оргкомитет проверяет заявки на корректность и соответствие номинации.','02'],
@@ -1240,7 +1240,7 @@ $$('.h2 em').filter(em => !em.closest('.nom, .gal')).forEach((em,i) => em.insert
 $('#juryRail').innerHTML = JURY.map(j => `<div class="jc"><div class="ph"><span class="tag">${j[3]}</span><img src="${j[2]}" alt="${j[0]}" loading="lazy"></div><h4>${j[0]}</h4><p>${j[1]}</p></div>`).join('');
 // statuettes open the gallery (photo: Ivan Abramov); GAL[0] already opens the bento, so it is skipped here
 const galSet = `<div class="gi"><img src="statuettes-2026.jpg" alt="Статуэтки Generation AI Awards 2026"></div>`
-  + GAL.slice(1).map(g => `<div class="gi"><img src="${T+g}" alt=""></div>`).join('');
+  + GAL.slice(1).map(g => `<div class="gi"><img src="${g}" alt=""></div>`).join('');
 $('#galRail').innerHTML = galSet + galSet.replace(/<div class="gi">/g, '<div class="gi" aria-hidden="true">');
 $('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/participants/${f}.svg" alt="${name}" loading="lazy"></div>`).join('')
   + '<div class="fill" aria-hidden="true"></div>'.repeat((6 - LOGOS.length % 6) % 6);
@@ -1249,10 +1249,10 @@ $('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/particip
 const pad2 = i => String(i+1).padStart(2,'0');
 $('#btrack').innerHTML = BEN.map((b,i) => `<article class="bp"><span class="bn">${pad2(i)}</span>
   <div class="tx"><div class="bw">${b[0]}<i>.</i></div><p>${b[1]}</p><span class="bf">✓ ${b[2]}</span></div>
-  <figure><img src="${T+GAL[b[3]]}" alt="" loading="lazy"><figcaption class="hand">${b[4]}</figcaption></figure></article>`).join('');
+  <figure><img src="${GAL[b[3]]}" alt="" loading="lazy"><figcaption class="hand">${b[4]}</figcaption></figure></article>`).join('');
 $('#bnav').innerHTML = BEN.map((b,i) => `<button data-i="${i}"><i></i><small>${pad2(i)}</small><span>${b[0]}</span></button>`).join('');
 $('#blist').innerHTML = BEN.map((b,i) => `<div class="brow" data-i="${i}"><span class="n">${pad2(i)}</span><div class="w">${b[0]}<i>.</i></div><div class="d">${b[1]}<b>${b[2]}</b></div></div>`).join('');
-$('#bfloat').innerHTML = BEN.map(b => `<img src="${T+GAL[b[3]]}" alt="">`).join('');
+$('#bfloat').innerHTML = BEN.map(b => `<img src="${GAL[b[3]]}" alt="">`).join('');
 const USES = ['Чат-боты','AI-агенты','ИИ-суфлеры','Личные копайлоты','Базы знаний и RAG','Генерация контента','Работа с документами','Речевая аналитика','Разработка и тестирование','Подбор персонала'];
 const REVS = [
   ['RAFT','Участие в премии дало возможность оценить себя и свои решения на рынке, а также познакомиться с другими проектами в области GenAI и вдохновиться новыми идеями.','https://static.tildacdn.com/tild3134-6662-4439-a238-656239336132/raft.png'],
@@ -1261,7 +1261,7 @@ const REVS = [
 ];
 const NEDRA = 'Для Nedra Digital включение в шорт-лист премии Generation AI Awards — это признание инновационного подхода и технологического лидерства компании.';
 $('#bento').innerHTML = `
-  <div class="bt t1"><img src="${T+GAL[0]}" alt=""><span class="hand">а тут — ваша команда?</span>
+  <div class="bt t1"><img src="${GAL[0]}" alt=""><span class="hand">а тут — ваша команда?</span>
     <div class="ov"><span class="n">01</span><h3>Признание</h3><p>${BEN[0][1]} ${BEN[0][2]}.</p></div></div>
   <div class="bt t2"><span class="n">02 · Оценка</span><div class="big">20+</div><p class="cos">экспертов жюри из Авито, X5, MWS AI, Северстали, Сколково Капитал и Just AI</p><p>${BEN[1][1]}</p></div>
   <div class="bt t3"><span class="n">03 · Нетворкинг</span><div class="big"><span data-count="400">0</span></div><p>гостей церемонии: заказчики, вендоры, команды</p></div>
