@@ -263,8 +263,10 @@ section{position:relative}
 .lgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:40px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .lgrid div{height:clamp(110px,11vw,160px);display:grid;place-items:center;background:var(--bg);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lgrid img{width:56%;height:34%;object-fit:contain}
-.lgrid .fill{display:none}
-@media (min-width:901px){.lgrid .fill{display:block}}   /* empty cells close the last row of six */
+/* the free cells at the end of the last row of six merge into one invitation */
+.lgrid .fill{display:none;font-family:Caveat,cursive;font-weight:700;font-size:clamp(24px,2.2vw,34px);line-height:1.1;color:var(--violet);text-align:center;padding:0 16px}
+.lgrid .fill span{rotate:-3deg}
+@media (min-width:901px){.lgrid .fill{display:grid}}
 @media (max-width:900px){.lgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:480px){.lgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* participants on the pearl backdrop: colour logos, light cells */
@@ -572,7 +574,7 @@ section{position:relative}
 .nom .head{margin-bottom:46px}
 .nom .head .h2{margin-bottom:40px}
 .nom .h2{font-size:clamp(28px,3.2vw,40px)}
-.howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px}
+.howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .howto .steps{display:grid;grid-template-rows:1fr 1fr;gap:12px}
 .howto .steps>div{background:var(--bg3);border-radius:18px;padding:20px 22px;font-size:15px;font-weight:500}
 .howto b{display:block;color:var(--acc);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
@@ -766,7 +768,9 @@ section{position:relative}
 .org{padding:var(--sec) 0}
 .org .h2{margin-bottom:40px}
 .ogrid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,5vw,80px);align-items:start;border-top:1px solid var(--line);padding-top:56px}
-.ologo{display:block;width:clamp(120px,12vw,180px);height:auto}
+/* organizer logo on the same plate as the partner and participant logos */
+.oplate{display:grid;place-items:center;height:clamp(160px,15vw,220px);background:rgba(255,255,255,.45);border:1px solid rgba(39,32,167,.12)}
+.ologo{display:block;width:clamp(150px,16vw,240px);height:auto}
 .olead{font-size:clamp(20px,2vw,30px);font-weight:700;line-height:1.25}
 .ogrid p:not(.olead){color:var(--mute);margin-top:16px;max-width:620px}
 .olinks{display:flex;gap:22px;align-items:center;margin-top:28px;flex-wrap:wrap}
@@ -1061,7 +1065,7 @@ section{position:relative}
   <div class="wrap">
   <h2 class="h2 split" data-split>Организатор премии</h2>
   <div class="ogrid">
-    <div><img class="ologo" src="assets/justai.svg" alt="Just AI" width="100" height="100"></div>
+    <div class="oplate"><img class="ologo" src="assets/justai.svg" alt="Just AI" width="179" height="50"></div>
     <div>
       <p class="olead fade">Ведущий разработчик продуктов и решений на базе генеративного ИИ с 2011 года.</p>
       <p class="fade">Помогаем компаниям формировать стратегию работы с GenAI: проводим аудит бизнес-функций, выявляем зоны с наибольшим потенциалом, создаем дорожную карту внедрения с учетом приоритетов и зрелости организации, обучаем сотрудников и топ-менеджеров работе с AI.</p>
@@ -1242,7 +1246,7 @@ const galSet = `<div class="gi"><img src="statuettes-2026.jpg" alt="Статуэ
   + GAL.slice(1).map(g => `<div class="gi"><img src="${g}" alt=""></div>`).join('');
 $('#galRail').innerHTML = galSet + galSet.replace(/<div class="gi">/g, '<div class="gi" aria-hidden="true">');
 $('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/participants/${f}.svg" alt="${name}" loading="lazy"></div>`).join('')
-  + '<div class="fill" aria-hidden="true"></div>'.repeat((6 - LOGOS.length % 6) % 6);
+  + (LOGOS.length % 6 ? `<div class="fill" style="grid-column:span ${6 - LOGOS.length % 6}"><span>здесь может быть ваша компания</span></div>` : '');
 
 /* benefits, three layouts */
 const pad2 = i => String(i+1).padStart(2,'0');

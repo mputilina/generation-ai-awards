@@ -39,10 +39,10 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Layout: all content sits in a 1440px field (`--field`; `.wrap` is `min(1440px, 100% - 2*pad)`; full-bleed rails use `--fpad` to line up with it). Every block has `padding: 180px 0` (`--sec`, 110px under 760px). The video block is the one full-bleed exception.
 - Buttons have no arrows. Carousel ←/→ controls stay.
 - Jury photos are local: `assets/jury/<surname>.webp` (4:3, colour, no grayscale). Map in `JURY_PH` (build.py) and `JURY` (index.html).
-- Index nominations: steps 1–2 stacked in one column beside the AI-Навигатор card (laid out like the review card `.rbox`, own violet fill); 12 cards in a 4-column grid, no numbers; the «Инк» special prize is a full-width plate in brand violet `#2720a7` with a gradient.
+- Index nominations: steps 1–2 stacked in one column beside the AI-Навигатор card, both columns equal width (laid out like the review card `.rbox`, own violet fill); 12 cards in a 4-column grid, no numbers; the «Инк» special prize is a full-width plate in brand violet `#2720a7` with a gradient.
 - Button labels must sit in a `<span>` inside `.btn`, otherwise the white hover fill covers the text. On card-links (`.nav2`, `.nspecial`) hovering the card fills the button too.
 - Gallery → winners gap is a single 180px (`#gallery + #winners .bcta{padding-top:0}`).
-- Organizer block: H2 «Организатор премии», Just AI logo `assets/justai.svg`, logo and text top-aligned.
+- Organizer block: H2 «Организатор премии», horizontal Just AI logo `assets/justai.svg` centred on a plate styled like the partner/participant cells (`.oplate`), plate and text top-aligned.
 - Index gallery: equal-height photos, natural width, endless loop (two identical sets).
 - Gallery pages show the ceremony video above the photos (`GAL_VIDEO` in build.py).
 - Header: logo image; the current page's link is lime (`aria-current`, `.dd.on` on inner pages; scroll-spy `.on` for #about/#nom on index.html).
@@ -52,7 +52,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Nomination pages have no forms. "Заполнить заявку" links to the live form: `APPLY_BASE` in build.py (`https://awards.generation-ai.ru/nomination/<slug>`). Note the live "Выбор генеративного AI" URL has a typo, `/nomintaion/opensource`; it is correct as is.
 - External on purpose: Кейсориум (generation-ai.ru), the "Что думают члены жюри…" article, privacy policy PDF, Telegram links.
 - Partner logos on index.html are local SVGs in `assets/partners/`, listed with their links in `PARTNERS` (order, name, URL); each cell is a link opening in a new tab, no numbers.
-- Participant logos on index.html are local SVGs in `assets/participants/`, listed in `LOGOS` (file, name); same hairline table as the partners, 6 per row (4 under 900px, 2 under 480px); empty `.fill` cells close the last row of six.
+- Participant logos on index.html are local SVGs in `assets/participants/`, listed in `LOGOS` (file, name); same hairline table as the partners, 6 per row (4 under 900px, 2 under 480px); the free cells of the last row of six merge into one `.fill` cell with «здесь может быть ваша компания» in Caveat.
 - No Tilda dependency: every image is a local file. Winner/finalist and review logos live in `images/logos/` (WebP, trimmed to the logo on white), article images in `images/articles/`. Never hotlink tildacdn.com again.
 
 ## Open items
