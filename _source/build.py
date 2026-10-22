@@ -42,6 +42,7 @@ def header(active=''):
       <a href="ai-navigator.html"{cur('nav')}><b>AI-Навигатор 2.0</b><span>Пошаговое руководство для оформления заявок</span></a>
       <a href="{EXPERT_VIEW}" target="_blank" rel="noopener"><b>Что думают члены жюри о будущем GenAI в России?</b><span>Взгляд AI-экспертов Generation AI Awards</span></a>
       <a href="analytical-review.html"{cur('rev')}><b>От чат-бота к агенту</b><span>Аналитический обзор по итогам 2026: тренды и отраслевые кейсы</span></a></div></div>
+    <a href="shortlist-2026.html" class="btn nav-cta"><span>Смотреть победителей</span></a>
   </nav>
   <a href="shortlist-2026.html" class="btn ghost"><span class="long">Смотреть победителей</span><span class="short">Победители</span></a>
 </header>'''

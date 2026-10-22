@@ -42,6 +42,7 @@ img{display:block;max-width:100%}
 .nav .sub.wide{min-width:340px;left:auto;right:-60px}
 .nav .sub.wide a{white-space:normal;padding:12px 14px}
 .nav .sub.wide b{display:block;font-weight:700}
+.nav .nav-cta{display:none}   /* shown only inside the mobile menu */
 .nav .sub.wide span{display:block;font-size:12.5px;color:var(--mute);margin-top:3px}
 .burger{display:none;width:44px;height:44px;border-radius:50%;margin-left:auto;position:relative}
 .burger i,.burger i::before,.burger i::after{position:absolute;left:12px;right:12px;height:2px;background:#fff;border-radius:2px;content:"";transition:transform .3s var(--ease)}
@@ -230,11 +231,17 @@ main{padding-bottom:var(--sec)}
   .nav{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#141414;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5);opacity:0;visibility:hidden;translate:0 -8px;transition:opacity .25s,translate .3s var(--ease),visibility .25s;max-height:calc(100vh - 100px);overflow:auto}
   .menu-open .nav{opacity:1;visibility:visible;translate:0 0}
   .nav .dd>button{width:100%;justify-content:space-between}
-  .nav .sub,.nav .sub.wide{position:static;opacity:1;visibility:visible;translate:none;box-shadow:none;border:0;background:transparent;padding:0 0 6px 14px;min-width:0}
-  .nav .dd>button i{display:none}
-  .burger{display:block;margin-left:0}
+  /* second level folds away; a chevron on the first level opens it */
+  .nav .sub,.nav .sub.wide{display:none;position:static;opacity:1;visibility:visible;translate:none;box-shadow:none;border:0;background:transparent;padding:0 0 6px 14px;min-width:0}
+  .nav .dd.open .sub{display:block}
+  .nav .dd:hover>button i,.nav .dd:focus-within>button i{rotate:45deg;translate:0 -2px}
+  .nav .dd.open>button i{rotate:225deg;translate:0 1px}
+  /* burger on the right; the winners button lives inside the menu */
+  .burger{display:block;margin-left:auto}
+  .hdr>.btn{display:none}
+  .nav .nav-cta{display:flex;justify-content:center;margin-top:10px;padding:14px 22px;background:var(--acc);color:var(--acc-ink);font-weight:700;font-size:15px}
+  .nav .nav-cta:hover{background:var(--acc)}
   .hdr{gap:10px}
-  .hdr .btn{margin-left:auto}
   .ngrid,.nomblock{grid-template-columns:1fr;gap:26px}
   .jgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:60px 16px}
   .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}

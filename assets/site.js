@@ -11,6 +11,10 @@
       burger.setAttribute('aria-expanded', open);
     });
     $$('.nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu-open')));
+    /* in the mobile menu the second level opens with a tap on its first-level item */
+    $$('.nav .dd>button').forEach(b => b.addEventListener('click', () => {
+      const open = b.parentElement.classList.toggle('open'); b.setAttribute('aria-expanded', open);
+    }));
   }
 
   /* wrap wide tables so they scroll on phones */

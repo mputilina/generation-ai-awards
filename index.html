@@ -87,7 +87,30 @@ section{position:relative}
 .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
 .btn.ghost:hover{color:#000}
 .hdr .btn{padding:11px 18px;font-size:14px}
-@media (max-width:900px){.nav{display:none}.hdr .btn{margin-left:auto}}
+.nav-cta{display:none}
+/* burger (mobile menu) */
+.burger{display:none;width:44px;height:44px;border-radius:50%;margin-left:auto;position:relative}
+.burger i,.burger i::before,.burger i::after{position:absolute;left:12px;right:12px;height:2px;background:#fff;border-radius:2px;content:"";transition:transform .3s var(--ease)}
+.burger i{top:21px}.burger i::before{left:0;right:0;top:-6px}.burger i::after{left:0;right:0;top:6px}
+.menu-open .burger i{background:transparent}
+.menu-open .burger i::before{transform:translateY(6px) rotate(45deg)}
+.menu-open .burger i::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:1000px){
+  .nav{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#141414;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5);opacity:0;visibility:hidden;translate:0 -8px;transition:opacity .25s,translate .3s var(--ease),visibility .25s;max-height:calc(100vh - 100px);overflow:auto}
+  .menu-open .nav{opacity:1;visibility:visible;translate:0 0}
+  .nav .dd > button{width:100%;justify-content:space-between}
+  /* second level folds away; a chevron on the first level opens it */
+  .nav .sub,.nav .sub.wide{display:none;position:static;opacity:1;visibility:visible;translate:none;box-shadow:none;border:0;background:transparent;padding:0 0 6px 14px;min-width:0}
+  .nav .dd.open .sub{display:block}
+  .nav .dd:hover > button i{rotate:45deg;translate:0 -2px}
+  .nav .dd.open > button i{rotate:225deg;translate:0 1px}
+  /* burger on the right; the winners button lives inside the menu */
+  .burger{display:block}
+  .hdr > .btn{display:none}
+  .nav .nav-cta{display:flex;justify-content:center;margin-top:10px;padding:14px 22px;background:var(--acc);color:var(--acc-ink);font-weight:700;font-size:15px}
+  .nav .nav-cta:hover{background:var(--acc)}
+  .hdr{gap:10px}
+}
 
 /* ---------- marquee ---------- */
 .mq{overflow:hidden;white-space:nowrap;background:var(--violet);color:#fff;padding:14px 0;font-size:clamp(18px,2.2vw,30px);font-weight:600;text-transform:uppercase;letter-spacing:-.01em}
@@ -827,7 +850,8 @@ section{position:relative}
 <a class="st-bar" href="#nom"><span><i></i>2 декабря — старт приема заявок на Generation AI Awards 2027</span><b>Смотреть номинации →</b></a>
 <header class="hdr" id="hdr">
   <a href="#top" class="logo" aria-label="Generation AI Awards — наверх"><img src="assets/logo.svg" alt="Generation AI Awards" width="235" height="59"></a>
-  <nav class="nav">
+  <button class="burger" aria-label="Меню" aria-expanded="false"><i></i></button>
+  <nav class="nav" aria-label="Основное меню">
     <a href="#about">О премии</a><a href="#nom">Номинации</a>
     <div class="dd"><button>Лауреаты<i></i></button><div class="sub"><a href="shortlist-2026.html">2026 год</a><a href="shortlist-2025.html">2025 год</a></div></div>
     <div class="dd"><button>Галерея<i></i></button><div class="sub"><a href="gallery-2026.html">2026 год</a><a href="gallery-2025.html">2025 год</a></div></div>
@@ -835,6 +859,7 @@ section{position:relative}
       <a href="ai-navigator.html"><b>AI-Навигатор 2.0</b><span>Пошаговое руководство для оформления заявок</span></a>
       <a href="https://generation-ai.ru/media/genai-awards-expert-view"><b>Что думают члены жюри о будущем GenAI в России?</b><span>Взгляд AI-экспертов Generation AI Awards</span></a>
       <a href="analytical-review.html"><b>От чат-бота к агенту</b><span>Аналитический обзор по итогам 2026: тренды и отраслевые кейсы</span></a></div></div>
+    <a href="shortlist-2026.html" class="btn nav-cta"><span>Смотреть победителей</span></a>
   </nav>
   <a href="shortlist-2026.html" class="btn ghost"><span class="long">Смотреть победителей</span><span class="short">Победители</span></a>
 </header>
@@ -1290,6 +1315,12 @@ const cio = new IntersectionObserver(es => es.forEach(e => {
   requestAnimationFrame(step);
 }), {threshold:.5});
 $$('[data-count]').forEach(el => cio.observe(el));
+
+/* ---------- mobile menu: burger, second level opens on tap ---------- */
+const burger = $('.burger');
+burger.addEventListener('click', () => { const open = document.body.classList.toggle('menu-open'); burger.setAttribute('aria-expanded', open); });
+$$('.nav a').forEach(a => a.addEventListener('click', () => { document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', false); }));
+$$('.nav .dd > button').forEach(b => b.addEventListener('click', () => { const open = b.parentElement.classList.toggle('open'); b.setAttribute('aria-expanded', open); }));
 
 /* ---------- header hide on scroll ---------- */
 let lastY = 0, vel = 0;
