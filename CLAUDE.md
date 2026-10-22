@@ -27,8 +27,8 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - `jury.txt` — `J: Name | Role`. Photos are mapped in `JURY_PH` in build.py.
 - `noms.py` — nominations: slug, title, description, criteria. Also feeds section 5 of protocol.html via `[[CRITERIA]]`.
 - `ai_navigator.md`, `analytical_review.md`, `protocol.md`, `ink.md`, `choice.md` — Markdown plus site blocks:
-  - `:::kind` … `+++` (next card, optional modifier e.g. `+++ dont`) … `:::` → card grid. Kinds: intro, qa, callouts, steps, versus, dodont, experts, icons, template, quote, test, trends, duo, prize (large photo + quote), highlight (bright lime plate around a whole section, its `## heading` inside) — styled in site.css as `.blk-<kind>`.
-  - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`, `!figure URL | alt` (large image, used by `prize`).
+  - `:::kind` … `+++` (next card, optional modifier e.g. `+++ dont`) … `:::` → card grid. Kinds: intro, qa, callouts, steps, versus, dodont, experts, icons, template, quote, test, trends, duo, prize (large photo + quote), advice (jury photo + name/role + advice on a grey-to-black gradient, AI-Навигатор), highlight (bright lime plate around a whole section, its `## heading` inside) — styled in site.css as `.blk-<kind>`.
+  - Card first line may be `!icon URL`, `!person Name | Role`, `!photo URL | Name | Role`, `!figure URL | alt` (large image, used by `prize`), `!juror URL | Name | Role` (large jury photo with name and role, used by `advice`).
   - `C: Company | type | task | solution | result | nomination` → case card (only in `analytical_review.md`). Its logo comes from `case_logos.txt` (`Company | images/cases/*.webp`, round 144×144 images shown as 64px circles); a company without one gets a same-size circle with its initials. МТС shows the VisionLabs logo (the case is VisionLabs technology), at the owner's request.
   - `[[CTA text | button | href]]`, `[[META a | b]]`, `[[COVER url]]`, `[[TOC]]`.
 - `gal2026.txt`, `gallery_2025.txt` — gallery photo paths, one per line, local WebP files in `images/gallery-<year>/` (2026 page also shows `statuettes-2026.jpg` first).
@@ -45,7 +45,7 @@ Rebuild after any change to `_source/`, and also after changing the footer in `i
 - Organizer block: H2 «Организатор премии», horizontal Just AI logo `assets/justai.svg` centred on a plate styled like the partner/participant cells (`.oplate`), plate and text top-aligned.
 - Index gallery: equal-height photos, natural width, endless loop (two identical sets).
 - Gallery pages show the ceremony video above the photos (`GAL_VIDEO` in build.py).
-- Nomination pages (`body.nom-page`): criteria as cards, apply + help plates in one row, 180px between blocks. Text nominations (`nom-text`: Инк, Выбор генеративного AI) keep the intro paragraph next to the lead; their H2 sections are 180px apart.
+- Nomination pages (`body.nom-page`): criteria as cards, apply + help plates in one row, 180px between blocks. Text nominations (`nom-text`: Инк, Выбор генеративного AI) keep the intro paragraph next to the lead; their H2 sections are 180px apart. Each also has `nom-<slug>`; on `nom-ink` the card blocks span the whole 1440px field (headings and plain paragraphs stay 860px), theses 4 per row.
 - «От чат-бота к агенту» (`article(..., side_toc=True)`): two columns — the article 970px on the left, the `[[TOC]]` moved into a sticky right column (`.art-side`) whose current section turns lime (site.js); article H3 28px with 90px top margin; case cards 2 per row, `dt` 15px. One column under 1100px with the contents on top.
 - Header: logo image; the current page's link is lime (`aria-current`, `.dd.on` on inner pages; scroll-spy `.on` for #about/#nom on index.html).
 - No custom cursor, no variants panel (both removed on purpose — don't bring back).

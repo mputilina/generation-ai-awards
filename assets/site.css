@@ -240,7 +240,7 @@ main{padding-bottom:var(--sec)}
   .crit-foot{grid-template-columns:1fr}
   .apply{position:static}
 }
-@media (max-width:600px){.cgrid{grid-template-columns:1fr}}
+@media (max-width:600px){.cgrid,.nom-ink .blk-qa{grid-template-columns:1fr}}
 @media (max-width:760px){:root{--sec:110px}.jgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 14px}}
 @media (max-width:600px){
   .hdr .btn .long{display:none}
@@ -312,6 +312,21 @@ main{padding-bottom:var(--sec)}
 .blk-prize blockquote{border:0;padding:0;font-size:19px;line-height:1.55;font-style:italic;color:#fff}
 .blk-prize blockquote p+p{font-style:normal;font-size:15px;color:var(--mute)}
 .blk-prize blockquote p+p strong{color:#fff}
+/* jury advice: large photo, name and advice on a grey-to-black gradient (AI-Навигатор) */
+.blk-advice .card{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center;padding:20px;background:linear-gradient(135deg,#2b2b2b 0%,#161616 55%,#050505 100%);border-color:#2f2f2f}
+.blk-advice .card>*+*{margin-top:0}
+.blk-advice .fig{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.blk-advice .txt>*+*{margin-top:.8em}
+.blk-advice .who{display:block}
+.blk-advice .who b{display:block;font-size:20px;color:#fff}
+.blk-advice .who small{display:block;font-size:14px;color:var(--mute);margin-top:4px}
+/* Инк: favourites, prize and how-to span the whole field; headings and plain paragraphs keep a reading width */
+.nom-ink .narrow>.prose{max-width:none}
+.nom-ink .prose>p,.nom-ink .prose>h2{max-width:860px}
+.nom-ink .blk-qa{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nom-ink .blk-prize .card{grid-template-columns:minmax(0,400px) minmax(0,1fr);padding:24px}
+.nom-ink .blk-prize .txt{max-width:760px}
+.nom-ink .blk-prize blockquote{font-size:clamp(19px,1.6vw,24px)}
 /* a bright plate around a whole section (Инк: «Как принять участие?») */
 .blk-highlight .card{background:linear-gradient(120deg,#c6f766,#b5f08a 55%,#9fe0b4);border:0;color:#0a0a0a;padding:clamp(28px,4vw,52px);font-size:18px}
 .blk-highlight .card h2{margin:0;color:#0a0a0a;padding:0}
@@ -349,7 +364,9 @@ main{padding-bottom:var(--sec)}
 
 @media (max-width:1000px){
   .ph-grid,.blk-steps,.blk-experts,.blk-icons{grid-template-columns:1fr}
-  .blk-prize .card{grid-template-columns:1fr}
+  .blk-prize .card,.nom-ink .blk-prize .card,.blk-advice .card{grid-template-columns:1fr}
+  .blk-advice .fig{max-width:420px}
+  .nom-ink .blk-qa{grid-template-columns:repeat(2,minmax(0,1fr))}
   .blk-prize .fig{max-width:340px}
   .blk-test{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

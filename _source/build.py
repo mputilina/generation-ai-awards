@@ -121,6 +121,10 @@ def block_item(kind, body, mod):
         name, role = [x.strip() for x in lines[0][8:].split('|')]
         initials = ''.join(w[0] for w in name.split()[:2])
         top = f'<div class="who"><span class="av">{esc(initials)}</span><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
+    elif lines and lines[0].startswith('!juror '):   # large jury photo + name and role (advice cards)
+        src, name, role = [x.strip() for x in lines[0][7:].split('|')]
+        top = f'<img class="fig" src="{esc(src)}" alt="{esc(name)}" loading="lazy">'; lines = lines[1:]
+        lines = [f'<p class="who"><b>{esc(name)}</b><small>{esc(role)}</small></p>', ''] + lines
     elif lines and lines[0].startswith('!figure '):
         src, alt = [x.strip() for x in lines[0][8:].split('|')]
         top = f'<img class="fig" src="{esc(src)}" alt="{esc(alt)}" loading="lazy">'; lines = lines[1:]
@@ -128,6 +132,7 @@ def block_item(kind, body, mod):
         src, name, role = [x.strip() for x in lines[0][7:].split('|')]
         top = f'<div class="who"><img class="av" src="{esc(src)}" alt="{esc(name)}" loading="lazy"><div><b>{esc(name)}</b><small>{esc(role)}</small></div></div>'; lines = lines[1:]
     inner = md_inline('\n'.join(lines))
+    if kind == 'advice': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
     if kind == 'prize': return f'<div class="card">{top}<div class="txt">{inner}</div></div>'
     if kind == 'quote': return f'<figure class="card"><blockquote>{inner}</blockquote><figcaption>{top}</figcaption></figure>'
     tag = {'dodont': ('Не стоит' if mod == 'dont' else 'Приветствуется')}.get(kind, '')
@@ -312,7 +317,7 @@ def special(slug, src, title, desc):
     lead_block = f'<p class="lead">{lead}</p>' if lead else ''
     b = f'''<section class="phead"><div class="wrap narrow">{crumbs(("Номинации", "index.html#nom"), (NOM_TITLE[slug], None))}<h1 class="long">{esc(h1)}</h1>{lead_block}</div></section>
 <main><div class="wrap narrow"><article class="prose">{body}</article></div><div class="wrap">{other_noms(slug)}</div></main>'''
-    return page(nom_file(slug), title, desc, b, 'nom', 'nom-page nom-text')
+    return page(nom_file(slug), title, desc, b, 'nom', f'nom-page nom-text nom-{slug}')
 
 if __name__ == '__main__':
     made = []
