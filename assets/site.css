@@ -336,9 +336,15 @@ main{padding-bottom:var(--sec)}
 .blk-quote blockquote{border:0;padding:0;font-size:19px;line-height:1.55;font-style:italic;color:#fff}
 .blk-quote figcaption{margin-top:22px}
 .blk-quote .who .av{width:64px;height:64px}
-.blk-test{grid-template-columns:repeat(4,minmax(0,1fr))}
-.blk-test .card h3{font-size:34px;line-height:1;color:var(--acc)}
-.blk-test .card.no h3{color:var(--coral)}
+/* test: one horizontal card per question — number, question, verdict */
+.blk-test{grid-template-columns:1fr}
+.blk-test .card{display:grid;grid-template-columns:56px minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:center;padding:22px 28px}
+.blk-test .card>*+*{margin-top:0}
+.blk-test .card h3{font-size:40px;line-height:1;color:var(--acc)}
+.blk-test .card p:first-of-type{font-size:17px;color:#fff}
+.blk-test .card p:last-of-type{color:var(--acc)}
+.blk-test .card p:last-of-type strong{color:inherit}
+.blk-test .card.no h3,.blk-test .card.no p:last-of-type{color:var(--coral)}
 .blk-trends{grid-template-columns:repeat(2,minmax(0,1fr));counter-reset:tr}
 .blk-trends .card{counter-increment:tr}
 .blk-trends .card h3::before{content:counter(tr,decimal-leading-zero);display:block;font-size:44px;font-weight:900;color:var(--acc);letter-spacing:-.03em;margin-bottom:10px}
@@ -368,10 +374,11 @@ main{padding-bottom:var(--sec)}
   .blk-advice .fig{max-width:420px}
   .nom-ink .blk-qa{grid-template-columns:repeat(2,minmax(0,1fr))}
   .blk-prize .fig{max-width:340px}
-  .blk-test{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:700px){
   .blk-intro,.blk-callouts,.blk-versus,.blk-duo,.blk-dodont,.blk-trends,.blk-test{grid-template-columns:1fr}
+  .blk-test .card{grid-template-columns:40px minmax(0,1fr);gap:8px 18px;align-items:start}
+  .blk-test .card h3{font-size:32px;grid-row:span 2}
   .winner{grid-template-columns:1fr}
   .wlogo{height:80px;max-width:200px}
 }
