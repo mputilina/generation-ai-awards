@@ -259,9 +259,11 @@ section{position:relative}
 
 /* ---------- logos: colour, static, no tricks ---------- */
 .logos{padding:var(--sec) 0}
-.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:40px}
-.lgrid div{height:92px;border-radius:16px;background:#fff;display:grid;place-items:center}
-.lgrid img{max-width:72%;max-height:46px;object-fit:contain}
+.lgrid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:40px}
+.lgrid div{height:clamp(84px,8.4vw,124px);border-radius:16px;background:#fff;display:grid;place-items:center}
+.lgrid img{width:80%;height:46%;object-fit:contain}
+@media (max-width:900px){.lgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:480px){.lgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* participants on the pearl backdrop: colour logos, light cells */
 [data-s-logos="pearl"] .logos{background:var(--pearl);color:#0a0a0a}
 [data-s-logos="pearl"] .logos .kicker{color:#4a4a55}
@@ -1107,7 +1109,9 @@ const JURY = [
   ['Владимир Сидоров','Руководитель кластера «Стратегия и новые технологии» в Северстали','assets/jury/sidorov.webp','Северсталь'],
 ];
 const T = 'https://static.tildacdn.com/';
-const LOGOS = ['tild3533-3533-4934-b530-336639363631/T-Bank.png','tild3963-3231-4636-a365-343831383365/Avito.png','tild6633-3664-4864-b965-653561643438/alfa-bank.png','tild6661-6539-4838-b138-616434316234/Sovcombank.png','tild3363-3636-4536-a335-326365316432/SBER.png','tild6263-3863-4461-b764-633366366462/Skolkovo.png','tild3735-6461-4862-b236-396638356530/Skyeng.png','tild3639-3131-4130-b135-623737346138/Vkusvill.png','tild3138-3532-4231-b166-373065316232/ITMO.png','tild6665-3666-4766-b762-373661616434/X5_tech.png','tild3030-6363-4639-b037-366364646533/beeline.png','tild3866-3862-4365-a463-663062313365/MOEX.png','tild6337-6238-4663-b866-616363383530/CIAN.png','tild6231-3935-4366-b363-633864343963/VTB.png','tild3335-3030-4133-b132-636433393065/koleso.png','liga-stavok.webp'];
+/* participant logos: the owner's SVGs, cropped tight to the mark */
+const LOGOS = [['t-bank','Т-Банк'],['avito','Авито'],['alfa-bank','Альфа-Банк'],['sovcombank','Совкомбанк'],['sber','Сбер'],['skolkovo','Сколково'],['skyeng','Skyeng'],['vkusvill','ВкусВилл'],
+  ['itmo','ИТМО'],['x5-tech','X5 Tech'],['beeline','Билайн'],['moex','Московская Биржа'],['cian','Циан'],['vtb','ВТБ'],['koleso','Колесо.ру'],['severstal','Северсталь']];
 const GAL = ['tild6462-3064-4032-b662-383966306635/0625_genAi-0521.jpg','tild3732-3135-4136-b834-336234636637/0625_genAi-0353.jpg','tild3763-3532-4561-b338-643063656137/0625_genAi-0316.jpg','tild6666-3765-4238-b865-663232643664/0625_genAi-0657.jpg','tild3136-3431-4434-b862-326363333964/0625_genAi-0159.jpg','tild3430-6638-4364-b066-376330653963/0625_genAi-0080.jpg','tild3235-6561-4136-b634-336433613961/0625_genAi-0198.jpg','tild6239-6266-4161-b732-363739353733/0625_genAi-0605.jpg','tild6134-3930-4637-b466-336166363461/0625_genAi-0558.jpg','tild6533-6163-4264-b362-373832633435/0625_genAi-0503.jpg','tild3837-6262-4430-a537-366137316338/0625_genAi-0576.jpg'];
 const STAGES = [
   ['05.12 — 27.04','Прием заявок','Прием заявок и регистрация участников, чьи заявки соответствуют требованиям Положения.','01'],
@@ -1224,7 +1228,7 @@ $('#juryRail').innerHTML = JURY.map(j => `<div class="jc"><div class="ph"><span 
 const galSet = `<div class="gi"><img src="statuettes-2026.jpg" alt="Статуэтки Generation AI Awards 2026"></div>`
   + GAL.slice(1).map(g => `<div class="gi"><img src="${T+g}" alt=""></div>`).join('');
 $('#galRail').innerHTML = galSet + galSet.replace(/<div class="gi">/g, '<div class="gi" aria-hidden="true">');
-$('#lgrid').innerHTML = LOGOS.map(l => `<div><img src="${l.startsWith('tild') ? T+l : l}" alt="" loading="lazy"></div>`).join('');
+$('#lgrid').innerHTML = LOGOS.map(([f, name]) => `<div><img src="assets/participants/${f}.svg" alt="${name}" loading="lazy"></div>`).join('');
 
 /* benefits, three layouts */
 const pad2 = i => String(i+1).padStart(2,'0');
