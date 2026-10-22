@@ -291,10 +291,23 @@ main{padding-bottom:var(--sec)}
 .blk-versus .card:last-child{border-color:rgba(198,247,102,.4)}
 .blk-versus .card:last-child h3::before{content:"+";color:var(--acc);margin-right:10px}
 .blk-versus li::marker{color:inherit}
+/* low-score list: coral minus signs instead of bullets */
+.blk-versus .card:first-child ul{list-style:none;padding-left:0}
+.blk-versus .card:first-child li{position:relative;padding-left:24px}
+.blk-versus .card:first-child li::before{content:"−";position:absolute;left:2px;color:var(--coral);font-weight:700}
 .blk-dodont{grid-template-columns:repeat(2,minmax(0,1fr))}
 .blk-dodont .badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(198,247,102,.15);color:var(--acc)}
 .blk-dodont .card.dont .badge{background:rgba(255,133,98,.15);color:var(--coral)}
 .blk-dodont .card.dont{border-color:rgba(255,133,98,.3)}
+/* «Не стоит» on the left, «Приветствуется» on the right */
+.blk-dodont{grid-auto-flow:row dense}
+.blk-dodont .card.dont{grid-column:1}
+.blk-dodont .card:not(.dont){grid-column:2}
+.blk-dodont .card>h4{margin-top:16px;font-size:20px;line-height:1.25;color:#fff}
+.blk-dodont .card>p{margin-top:8px}
+/* one lime card across the column (AI-Навигатор: «Важно!») */
+.blk-note .card{background:var(--acc);border:0;color:#0a0a0a;font-size:17px}
+.blk-note .card h3,.blk-note .card strong{color:#0a0a0a}
 .blk-experts{grid-template-columns:repeat(3,minmax(0,1fr))}
 .blk-experts .card{display:flex;flex-direction:column}
 .blk-experts .who{order:2;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
@@ -374,6 +387,7 @@ main{padding-bottom:var(--sec)}
 }
 @media (max-width:700px){
   .blk-intro,.blk-callouts,.blk-versus,.blk-duo,.blk-dodont,.blk-trends,.blk-test{grid-template-columns:1fr}
+  .blk-dodont .card.dont,.blk-dodont .card:not(.dont){grid-column:auto}
   .blk-test .card{grid-template-columns:40px minmax(0,1fr);gap:8px 18px;align-items:start}
   .blk-test .card h3{font-size:32px;grid-row:span 2}
   .winner{grid-template-columns:1fr}
